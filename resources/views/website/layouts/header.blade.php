@@ -26,10 +26,10 @@
               <ul class="list-inline pull-right flip sm-pull-none sm-text-center mt-5">
                 <li class="mt-sm-10 mb-sm-10">
                   <!-- Modal: Appointment Starts -->
-                  <a class="btn btn-default btn-flat btn-xs bg-light p-5 font-11 pl-10 pr-10 ajaxload-popup" href="{{ route('donate') }}">Donate Now</a>
+                  <a class="btn btn-default btn-flat btn-xs bg-light p-5 font-11 pl-10 pr-10 " href="{{ route('donate') }}">Donate Now</a>
                 </li>
                 <li class="mt-sm-10 mb-sm-10">
-                  <a class="btn btn-default btn-flat btn-xs bg-light p-5 font-11 pl-10 pr-10 ajaxload-popup" href="{{ route('login') }}">Login</a>
+                  <a class="btn btn-default btn-flat btn-xs bg-light p-5 font-11 pl-10 pr-10 " href="{{ route('login') }}">Login</a>
                 </li>
               </ul>
             </div>

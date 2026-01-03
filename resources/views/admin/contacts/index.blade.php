@@ -14,7 +14,7 @@
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
+                                            <th>SL</th>
                                             <th>Name</th>
                                             <th>Email</th>
                                             <th>Subject</th>
@@ -23,9 +23,9 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($contacts as $contact)
+                                        @foreach($contacts as $key => $contact)
                                             <tr>
-                                                <td>{{ $contact->id }}</td>
+                                                <td>{{ ++$key }}</td>
                                                 <td>{{ $contact->name }}</td>
                                                 <td>{{ $contact->email }}</td>
                                                 <td>{{ $contact->subject }}</td>

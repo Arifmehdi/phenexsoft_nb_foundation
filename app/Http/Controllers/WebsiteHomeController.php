@@ -118,12 +118,6 @@ class WebsiteHomeController extends Controller
         return view('website.visa');
     }
 
-    public function contact()
-    {
-        return view('website.contact');
-    }
-
-
     public function supportpolicy()
     {
         return view('website.support');

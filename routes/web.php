@@ -26,7 +26,8 @@ use App\Http\Controllers\Frontend\FrontendController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
 use App\Http\Controllers\SslCommerzPaymentController;
-use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Frontend\ContactController;
+use App\Http\Controllers\Admin\ContactController as AdminContactController;
 
 // Route::get('/',[AuthController::class,'index'])->name('login');
 
@@ -70,9 +71,11 @@ Route::get('/hotel',[WebsiteHomeController::class, 'hotel'])->name('hotel');
 Route::get('/visa',[WebsiteHomeController::class, 'visa'])->name('visa');
 Route::get('/about',[WebsiteHomeController::class,'about'])->name('about');
 Route::get('/service',[WebsiteHomeController::class,'service'])->name('service');
-Route::get('/contact',[WebsiteHomeController::class,'contact'])->name('contact');
-Route::post('/contact', [WebsiteHomeController::class, 'store'])->name('contact.store');
 Route::get('/{id}/search', [WebsiteHomeController::class, 'store'] )->name('hotel.search'); 
+
+// contact 
+Route::get('/contact',[ContactController::class,'contact'])->name('contact');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 // flutrust exclusive end
 
 
@@ -149,8 +152,8 @@ Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.in
 Route::post('/wishlist/add', [WishlistController::class, 'add'])->name('wishlist.add');
 Route::post('/wishlist/remove', [WishlistController::class, 'remove'])->name('wishlist.remove');
 
-Route::get('/contact',[FrontendController::class,'contact'])->name('contact');
-Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+// Route::get('/contact',[FrontendController::class,'contact'])->name('contact');
+// Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/service',[FrontendController::class,'service'])->name('service');
 // Route::get('/product',[HomeController::class,'product'])->name('product');
 
@@ -264,10 +267,10 @@ Route::get('/aboutus', [
     'as'   => 'aboutus',
 ]);
 
-Route::get('/contactus', [
-    'uses' => 'App\Http\Controllers\Frontend\FrontendController@contactus',
-    'as'   => 'contactus',
-]);
+// Route::get('/contactus', [
+//     'uses' => 'App\Http\Controllers\Frontend\FrontendController@contactus',
+//     'as'   => 'contactus',
+// ]);
 
 Route::get('/terms', function () {
     return view('frontend.home.terms');
@@ -601,9 +604,9 @@ Route::middleware(['userRole:admin','auth'])->prefix('admin')->group(function(){
     Route::get('invoice/print/{order}', [ProductController::class, 'orderPrint'])->name('admin.orderPrint');
 
     // Contacts
-    Route::get('contacts', [ContactController::class, 'index'])->name('admin.contacts.index');
-    Route::get('contacts/{contact}', [ContactController::class, 'show'])->name('admin.contacts.show');
-    Route::delete('contacts/{contact}', [ContactController::class, 'destroy'])->name('admin.contacts.destroy');
+    Route::get('contacts', [AdminContactController::class, 'index'])->name('admin.contacts.index');
+    Route::get('contacts/{contact}', [AdminContactController::class, 'show'])->name('admin.contacts.show');
+    Route::delete('contacts/{contact}', [AdminContactController::class, 'destroy'])->name('admin.contacts.destroy');
 
     // Product Stock Request Admin Routes
     Route::resource('stock-requests', \App\Http\Controllers\Admin\ProductStockRequestController::class)->names('admin.stock_requests');
