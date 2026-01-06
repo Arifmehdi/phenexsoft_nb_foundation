@@ -1041,7 +1041,7 @@
               <div class="title-icon">
                 <i class="flaticon-charity-hand-holding-a-heart"></i>
               </div>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem autem voluptatem obcaecati! <br>ipsum dolor sit Rem autem voluptatem obcaecati</p>
+              <p>Our gallery showcases the impactful work of North Foundation in education, healthcare, and disaster relief. <br>Each moment reflects our commitment to creating a better, more compassionate future for those in need.</p>
             </div>
           </div>
         </div>
@@ -1050,24 +1050,30 @@
             <div class="col-md-12">
               <!-- Portfolio Gallery Grid -->
 
+
               <div class="gallery-isotope grid-4 gutter-small clearfix" data-lightbox="gallery">
                 <!-- Portfolio Item Start -->
+
+                @forelse($galleries as $gallery)
                 <div class="gallery-item">
                   <div class="thumb">
-                    <img alt="project" src="{{ asset('frontend') }}/images/gallery/gallery-md1.jpg" class="img-fullwidth">
+                    <img alt="project" src="{{ asset('storage/galleries/' . $gallery->featured_image) }}" class="img-fullwidth">
                     <div class="overlay-shade"></div>
                     <div class="icons-holder">
                       <div class="icons-holder-inner">
                         <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                          <a href="{{ asset('frontend') }}/images/gallery/gallery-lg1.jpg"  data-lightbox-gallery="gallery"><i class="fa fa-picture-o"></i></a>
+                          <a href="{{ asset('storage/galleries/' . $gallery->featured_image) }}"  data-lightbox-gallery="gallery"><i class="fa fa-picture-o"></i></a>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
+                @empty 
+                <p>Here no gallery image here </p>
+                @endforelse 
                 <!-- Portfolio Item End -->
                 
-                <!-- Portfolio Item Start -->
+             {{--   <!-- Portfolio Item Start -->
                 <div class="gallery-item">
                   <div class="thumb">
                     <img alt="project" src="{{ asset('frontend') }}/images/gallery/gallery-lg2.jpg" class="img-fullwidth">
@@ -1241,7 +1247,7 @@
                     </div>
                   </div>
                 </div>
-                <!-- Portfolio Item End -->
+                <!-- Portfolio Item End --> --}}
               </div>
               <!-- End Portfolio Gallery Grid -->
             </div>

@@ -75,6 +75,11 @@ class FrontendController extends Controller
             ->select('id','name','designation','image','text_en','designation')
             ->get();
 
+        $data['galleries'] = Gallery::whereActive(true)
+            ->orderBy('priority', 'asc')
+            ->limit(12)
+            ->get();
+
         $data['newses'] = BlogPost::whereActive(true)->limit(3)->get();
         $data['sliders'] = FrontSlider::whereActive(true)
             ->select('featured_image','title','description','link')
