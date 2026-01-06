@@ -143,8 +143,8 @@ Route::get('/donate',[FrontendController::class,'donate'])->name('donate');
 Route::get('/campaign',[FrontendController::class,'campaign'])->name('campaign');
 Route::get('/membership',[FrontendController::class,'membership'])->name('membership');
 Route::get('/cause/details',[FrontendController::class,'cause_details'])->name('cause.details');
-Route::get('/blog',[FrontendController::class,'blog'])->name('blog');
-Route::get('/blog/details',[FrontendController::class,'blog_details'])->name('blog.details');
+Route::get('/news',[FrontendController::class,'news'])->name('blog');
+Route::get('/news/details/{id}',[FrontendController::class,'news_details'])->name('news.details');
 Route::get('/shop',[FrontendController::class,'shop'])->name('shop');
 Route::get('/quick-view', [FrontendController::class, 'quickView'])->name('quick.view');
 
@@ -232,15 +232,15 @@ Route::post('/register',[AuthController::class,'register'])->name('register');
 Route::post('/main-register',[AuthController::class,'mainRegister'])->name('main.register');
 
 
-Route::get('/news', [
-    'uses' => 'App\Http\Controllers\Frontend\FrontendController@news',
-    'as' => 'news'
-]);
+// Route::get('/news', [
+//     'uses' => 'App\Http\Controllers\Frontend\FrontendController@news',
+//     'as' => 'news'
+// ]);
 
-Route::get('/news/{id}', [
-    'uses' => 'App\Http\Controllers\Frontend\FrontendController@singleNews',
-    'as' => 'singleNews'
-]);
+// Route::get('/news/{id}', [
+//     'uses' => 'App\Http\Controllers\Frontend\FrontendController@singleNews',
+//     'as' => 'singleNews'
+// ]);
 
 Route::get('/support-policy', [
     'uses' => 'App\Http\Controllers\Frontend\FrontendController@supportpolicy',
@@ -619,6 +619,9 @@ Route::middleware(['userRole:admin','auth'])->prefix('admin')->group(function(){
 
     // Vehicle Assignment Admin Routes
     Route::resource('vehicle-assignments', \App\Http\Controllers\Admin\VehicleAssignmentController::class)->names('admin.vehicle_assignments');
+
+    // membership 
+    Route::resource('members', MemberController::class);
 
 });
 

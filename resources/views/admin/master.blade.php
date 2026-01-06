@@ -298,7 +298,7 @@
                         <a href="#" class="nav-link {{ session('lsbm') == 'departments'? ' active ' : ''}}">
                             <i class="nav-icon fas fa-passport"></i>
                             <p>
-                                How Works
+                                Department
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
@@ -306,13 +306,13 @@
                             <li class="nav-item">
                                 <a href="{{route('departments.index')}}" class="nav-link {{ session('lsbsm') == 'alldepartments' ? ' active ' : '' }}">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>All How Works</p>
+                                    <p>All Departments</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{route('departments.create')}}" class="nav-link {{ session('lsbsm') == 'createdepartments' ? ' active ' : '' }}">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Create How Works</p>
+                                    <p>Create Deparments</p>
                                 </a>
                             </li>
 
@@ -484,6 +484,25 @@
                         </ul>
                     </li>
 
+                    {{-- Contact Messages --}}
+                    <li class="nav-item {{ session('lsbm') == 'contacts' ? 'menu-open' : '' }}">
+                        <a href="#" class="nav-link {{ session('lsbm') == 'contacts' ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-shopping-bag"></i>
+                            <p>
+                            Contact
+                            <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                            <a href="{{ route('admin.contacts.index') }}" class="nav-link {{ session('lsbsm') == 'contactListAll' ? 'active' : '' }}">
+                                <i class="far fa-dot-circle nav-icon"></i>
+                                <p>Contact Message</p>
+                            </a>
+                            </li>
+                        </ul>
+                    </li>
+
                     {{--<li class="nav-item {{ session('lsbm') == 'appointments'? ' menu-open ' : ''}}">
                         <a href="#" class="nav-link {{ session('lsbm') == 'appointments'? ' active ' : ''}}">
                             <i class="nav-icon fas fa-pager"></i>
@@ -505,7 +524,7 @@
 
 
                     {{-- Products --}}
-                    <li class="nav-item {{ session('lsbm') == 'product'? ' menu-open ' : ''}}">
+                    {{--<li class="nav-item {{ session('lsbm') == 'product'? ' menu-open ' : ''}}">
                         <a href="#" class="nav-link {{ session('lsbm') == 'product'? ' active ' : ''}}">
                             <i class="nav-icon fas fa-shopping-cart"></i>
                             <p>
@@ -528,13 +547,13 @@
                             </li>
 
                         </ul>
-                    </li>
+                    </li>--}}
 
                                             
                         {{-- Vehicles --}}
-                    <li class="nav-item {{ session('lsbm') == 'vehicles'? ' menu-open ' : ''}}">
+                    {{-- <li class="nav-item {{ session('lsbm') == 'vehicles'? ' menu-open ' : ''}}">
                         <a href="#" class="nav-link {{ session('lsbm') == 'vehicles'? ' active ' : ''}}">
-                            <i class="nav-icon fas fa-truck"></i> {{-- Using a truck icon for vehicles --}}
+                            <i class="nav-icon fas fa-truck"></i>
                             <p>
                                 Vehicles
                                 <i class="fas fa-angle-left right"></i>
@@ -554,12 +573,12 @@
                                 </a>
                             </li>
                         </ul>
-                    </li>
+                    </li>--}}
 
                     {{-- Drivers --}}
-                    <li class="nav-item {{ session('lsbm') == 'drivers'? ' menu-open ' : ''}}">
+                    {{-- <li class="nav-item {{ session('lsbm') == 'drivers'? ' menu-open ' : ''}}">
                         <a href="#" class="nav-link {{ session('lsbm') == 'drivers'? ' active ' : ''}}">
-                            <i class="nav-icon fas fa-user-friends"></i> {{-- Using a user-friends icon for drivers --}}
+                            <i class="nav-icon fas fa-user-friends"></i>
                             <p>
                                 Drivers
                                 <i class="fas fa-angle-left right"></i>
@@ -579,10 +598,10 @@
                                 </a>
                             </li>
                         </ul>
-                    </li>
+                    </li> --}}
 
                     {{-- Vehicle Assignments --}}
-                    <li class="nav-item {{ session('lsbm') == 'vehicle_assignments'? ' menu-open ' : ''}}">
+                    {{-- <li class="nav-item {{ session('lsbm') == 'vehicle_assignments'? ' menu-open ' : ''}}">
                         <a href="#" class="nav-link {{ session('lsbm') == 'vehicle_assignments'? ' active ' : ''}}">
                             <i class="nav-icon fas fa-clipboard-list"></i>
                             <p>
@@ -604,10 +623,10 @@
                                 </a>
                             </li>
                         </ul>
-                    </li>
+                    </li> --}}
 
                     {{-- Product Stock Requests --}}
-                    <li class="nav-item {{ session('lsbm') == 'stock_requests' ? 'menu-open' : '' }}">
+                    {{-- <li class="nav-item {{ session('lsbm') == 'stock_requests' ? 'menu-open' : '' }}">
                         <a href="#" class="nav-link {{ session('lsbm') == 'stock_requests' ? 'active' : '' }}">
                             <i class="nav-icon fas fa-boxes"></i>
                             <p>
@@ -623,10 +642,10 @@
                             </a>
                             </li>
                         </ul>
-                    </li>
+                    </li> --}}
 
                     {{-- Orders --}}
-                    <li class="nav-item {{ session('lsbm') == 'order' ? 'menu-open' : '' }}">
+                    {{-- <li class="nav-item {{ session('lsbm') == 'order' ? 'menu-open' : '' }}">
                         <a href="#" class="nav-link {{ session('lsbm') == 'order' ? 'active' : '' }}">
                             <i class="nav-icon fas fa-shopping-bag"></i>
                             <p>
@@ -642,28 +661,9 @@
                             </a>
                             </li>
                         </ul>
-                    </li>
+                    </li> --}}
 
-                    {{-- Contact Messages --}}
-                    <li class="nav-item {{ session('lsbm') == 'contacts' ? 'menu-open' : '' }}">
-                        <a href="#" class="nav-link {{ session('lsbm') == 'contacts' ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-shopping-bag"></i>
-                            <p>
-                            Contact
-                            <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                            <a href="{{ route('admin.contacts.index') }}" class="nav-link {{ session('lsbsm') == 'contactListAll' ? 'active' : '' }}">
-                                <i class="far fa-dot-circle nav-icon"></i>
-                                <p>Contact Message</p>
-                            </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                   <li class="nav-item {{ session('lsbm') == 'shipping' ? 'menu-open' : '' }}">
+                   {{-- <li class="nav-item {{ session('lsbm') == 'shipping' ? 'menu-open' : '' }}">
                         <a href="#" class="nav-link {{ session('lsbm') == 'shipping' ? 'active' : '' }}">
                             <i class="nav-icon fas fa-shopping-bag"></i>
                             <p>
@@ -679,7 +679,7 @@
                             </a>
                             </li>
                         </ul>
-                    </li>
+                    </li> --}}
                    
                    
 

@@ -3,8 +3,8 @@
         <tr>
             <th>SL</th>
             <th>Action</th>
-            <th>Department Name</th>
-            <th>Image</th>
+            <th>Title</th>
+            <th>Icon</th>
             <th>Featured</th>
             <th>Active</th>
         </tr>

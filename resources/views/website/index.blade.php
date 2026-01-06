@@ -28,112 +28,86 @@
           <div class="rev_slider rev_slider_default" data-version="5.0">
             <ul>
 
-              <!-- SLIDE 1 -->
-              <li data-index="rs-1" data-transition="slidingoverlayhorizontal" data-slotamount="default" data-easein="default" data-easeout="default" data-masterspeed="default" data-thumb="images/bg/bg20.jpg" data-rotate="0" data-saveperformance="off" data-title="Slide 2" data-description="">
-                <!-- MAIN IMAGE -->
-                <img src="{{ asset('frontend') }}/images/bg/bg20.jpg"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-bgparallax="10" data-no-retina>
-                <!-- LAYERS -->
 
-                <!-- LAYER NR. 1 -->
-                <div class="tp-caption tp-resizeme text-uppercase text-white font-raleway"
-                  id="rs-1-layer-1"
+              @forelse($sliders as $index => $slider)
+                  <li
+                      data-index="rs-{{ $index + 1 }}"
+                      data-transition="slidingoverlayhorizontal"
+                      data-slotamount="default"
+                      data-masterspeed="default"
+                      data-thumb="{{ route('imagecache', ['template'=>'original','filename' => $slider->fi()]) }}"
+                  >
+                      <!-- MAIN IMAGE -->
+                      <img
+                          src="{{ route('imagecache', ['template'=>'original','filename' => $slider->fi()]) }}"
+                          alt="Slider Image"
+                          class="rev-slidebg"
+                          data-bgposition="center center"
+                          data-bgfit="cover"
+                          data-bgrepeat="no-repeat"
+                          data-bgparallax="10"
+                      >
 
-                  data-x="['left']"
-                  data-hoffset="['30']"
-                  data-y="['middle']"
-                  data-voffset="['-110']" 
-                  data-fontsize="['110']"
-                  data-lineheight="['120']"
-                  data-width="none"
-                  data-height="none"
-                  data-whitespace="nowrap"
-                  data-transform_idle="o:1;s:500"
-                  data-transform_in="y:100;scaleX:1;scaleY:1;opacity:0;"
-                  data-transform_out="x:left(R);s:1000;e:Power3.easeIn;s:1000;e:Power3.easeIn;"
-                  data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
-                  data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
-                  data-start="1000" 
-                  data-splitin="none" 
-                  data-splitout="none" 
-                  data-responsive_offset="on"
-                  style="z-index: 7; white-space: nowrap; font-weight:700;">Donate
-                </div>
+                      <!-- LAYER 1 -->
+                      {{--<div class="tp-caption tp-resizeme text-uppercase text-white font-raleway"
+                          data-x="left"
+                          data-hoffset="30"
+                          data-y="middle"
+                          data-voffset="-110"
+                          data-fontsize="110"
+                          data-lineheight="120"
+                          data-start="1000"
+                          style="font-weight:700;">
+                          {{ $slider->title ?? 'Donate' }}
+                      </div>--}}
 
-                <!-- LAYER NR. 2 -->
-                <div class="tp-caption tp-resizeme text-uppercase text-white font-raleway bg-theme-colored-transparent pl-20 pr-20"
-                  id="rs-1-layer-2"
+                      <!-- LAYER 2 -->
+                      <div class="tp-caption tp-resizeme text-uppercase text-white font-raleway bg-theme-colored-transparent pl-20 pr-20"
+                          data-x="left"
+                          data-hoffset="35"
+                          data-y="middle"
+                          data-voffset="-25"
+                          data-fontsize="35"
+                          data-lineheight="54"
+                          data-start="1100"
+                          style="font-weight:600;">
+                          {{ $slider->title ?? 'For the poor children' }}
+                      </div>
 
-                  data-x="['left']"
-                  data-hoffset="['35']"
-                  data-y="['middle']"
-                  data-voffset="['-25']" 
-                  data-fontsize="['35']"
-                  data-lineheight="['54']"
-                  data-width="none"
-                  data-height="none"
-                  data-whitespace="nowrap"
-                  data-transform_idle="o:1;s:500"
-                  data-transform_in="y:100;scaleX:1;scaleY:1;opacity:0;"
-                  data-transform_out="x:left(R);s:1000;e:Power3.easeIn;s:1000;e:Power3.easeIn;"
-                  data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
-                  data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
-                  data-start="1000" 
-                  data-splitin="none" 
-                  data-splitout="none" 
-                  data-responsive_offset="on"
-                  style="z-index: 7; white-space: nowrap; font-weight:600;">For the poor children 
-                </div>
+                      <!-- LAYER 3 -->
+                      <div class="tp-caption tp-resizeme text-white"
+                          data-x="left"
+                          data-hoffset="35"
+                          data-y="middle"
+                          data-voffset="35"
+                          data-fontsize="16"
+                          data-lineheight="28"
+                          data-start="1400">
+                          {{ strip_tags($slider->description ?? 'Every day we bring hope to millions of children.') }}
+                      </div>
 
-                <!-- LAYER NR. 3 -->
-                <div class="tp-caption tp-resizeme text-white" 
-                  id="rs-1-layer-3"
+                      <!-- BUTTON -->
+                      <div class="tp-caption tp-resizeme"
+                          data-x="left"
+                          data-hoffset="35"
+                          data-y="middle"
+                          data-voffset="95"
+                          data-start="1600">
+                          <a href="{{ $slider->button_url ?? '#' }}"
+                            class="btn btn-colored btn-lg btn-theme-colored pl-20 pr-20">
+                              {{ $slider->button_text ?? 'Donate Now' }}
+                          </a>
+                      </div>
+                  </li>
+              @empty
+                  <li>
+                      <div class="text-center p-50">
+                          <strong>No sliders available</strong>
+                      </div>
+                  </li>
+              @endforelse
 
-                  data-x="['left']"
-                  data-hoffset="['35']"
-                  data-y="['middle']"
-                  data-voffset="['35','35','40']"
-                  data-fontsize="['16','18',24']"
-                  data-lineheight="['28']"
-                  data-width="none"
-                  data-height="none"
-                  data-whitespace="nowrap"
-                  data-transform_idle="o:1;s:500"
-                  data-transform_in="y:100;scaleX:1;scaleY:1;opacity:0;"
-                  data-transform_out="x:left(R);s:1000;e:Power3.easeIn;s:1000;e:Power3.easeIn;"
-                  data-mask_in="x:0px;y:0px;s:inherit;e:inherit;"
-                  data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
-                  data-start="1400" 
-                  data-splitin="none" 
-                  data-splitout="none" 
-                  data-responsive_offset="on"
-                  style="z-index: 5; white-space: nowrap; letter-spacing:0px; font-weight:400;">Every day we bring hope to millions of children in the world's<br>  hardest places as a sign of God's unconditional love.
-                </div>
-
-                <!-- LAYER NR. 4 -->
-                <div class="tp-caption tp-resizeme" 
-                  id="rs-1-layer-4"
-
-                  data-x="['left']"
-                  data-hoffset="['35']"
-                  data-y="['middle']"
-                  data-voffset="['95','105','110']"
-                  data-width="none"
-                  data-height="none"
-                  data-whitespace="nowrap"
-                  data-transform_idle="o:1;"
-                  data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;" 
-                  data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
-                  data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" 
-                  data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
-                  data-start="1400" 
-                  data-splitin="none" 
-                  data-splitout="none" 
-                  data-responsive_offset="on"
-                  style="z-index: 5; white-space: nowrap; letter-spacing:1px;"><a class="btn btn-colored btn-lg btn-theme-colored pl-20 pr-20" href="#">Donate Now</a> 
-                </div>
-              </li>
-
-              <!-- SLIDE 2 -->
+              {{--<!-- SLIDE 2 -->
               <li data-index="rs-2" data-transition="slidingoverlayhorizontal" data-slotamount="default" data-easein="default" data-easeout="default" data-masterspeed="default" data-thumb="images/bg/bg23.jpg" data-rotate="0" data-saveperformance="off" data-title="Slide 1" data-description="">
                 <!-- MAIN IMAGE -->
                 <img src="{{ asset('frontend') }}/images/bg/bg23.jpg"  alt=""  data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-bgparallax="10" data-no-retina>
@@ -341,7 +315,7 @@
                   data-responsive_offset="on"
                   style="z-index: 5; white-space: nowrap; letter-spacing:1px;"><a class="btn btn-colored btn-lg btn-flat btn-theme-colored pl-20 pr-20" href="#">Donate Now</a> 
                 </div>
-              </li>
+              </li>--}}
 
             </ul>
           </div>
@@ -450,16 +424,24 @@
       <div class="container pt-0 pb-0">
         <div class="section-content">
           <div class="row" data-margin-top="-90px">
+            @forelse($departments as $department)
             <div class="col-sm-12 col-md-4">
               <div class="icon-box p-40 iconbox-theme-colored bg-white border-1px text-center">
                 <a class="icon" href="#">
-                  <i class="flaticon-charity-world-in-your-hands font-48 font-weight-100"></i>
+                  {{--<i class="flaticon-charity-world-in-your-hands font-48 font-weight-100"></i>--}}
+                      <img src="{{ route('imagecache', ['template'=>'original','filename' => $department->fi()]) }}"
+                      style="width:48px; height:48px; object-fit:contain;"
+                      alt="Icon">
                 </a>
-                <h4 class="text-uppercase mt-0">Expert Engineers</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias non nulla placeat, odio, qui dicta alias.</p>
+                <h4 class="text-uppercase mt-0">{{ $department->name_en }}</h4>
+                <p>{{ \Illuminate\Support\Str::limit(strip_tags($department->excerpt_en), 120, '...') }}</p>
               </div>
             </div>
-            <div class="col-sm-12 col-md-4">
+            @empty 
+            <p>There have no service yet</p>
+            @endforelse
+
+            {{--<div class="col-sm-12 col-md-4">
               <div class="icon-box p-40 iconbox-theme-colored bg-white border-1px text-center">
                 <a class="icon" href="#">
                   <i class="flaticon-charity-shaking-hands-inside-a-heart font-48 font-weight-100"></i>
@@ -476,7 +458,8 @@
                 <h4 class="text-uppercase mt-0">Quick Delivery</h4>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias non nulla placeat, odio, qui dicta alias.</p>
               </div>
-            </div>
+            </div>--}}
+
           </div>
         </div>
       </div>
@@ -491,7 +474,7 @@
               <div class="row">
                 <div class="col-md-6 col-sm-6 pl-0">
                   <div class="img-hover-border mt-sm-40">
-                    <img class="img-fullwidth" src="{{ asset('frontend') }}/images/about/d1.jpg" alt="">
+                    <img class="img-fullwidth" src="{{ asset('frontend') }}/images/about/about_001.jpg" alt="">
                   </div>
                 </div>
                 <div class="col-md-6 col-sm-6 pl-0 pr-0">
@@ -499,7 +482,7 @@
                     <img class="img-fullwidth" src="{{ asset('frontend') }}/images/about/d2.jpg" alt="">
                   </div>
                   <div class="img-hover-border mt-15 mt-sm-30">
-                    <img class="img-fullwidth" src="{{ asset('frontend') }}/images/about/a4.jpg" alt="">
+                    <img class="img-fullwidth" src="{{ asset('frontend') }}/images/about/about_003.jpg" alt="">
                   </div>
                 </div>
               </div>
@@ -538,7 +521,7 @@
             <div class="item">
               <div class="causes bg-white maxwidth500 mb-30">
                 <div class="thumb">
-                  <img src="{{ asset('frontend') }}/images/project/1.jpg" alt="" class="img-fullwidth">
+                  <img src="{{ asset('frontend') }}/images/project/001.png" alt="" class="img-fullwidth">
                 </div>
                 <div class="causes-details clearfix border-bottom p-15 pt-15 pb-15">
                 <ul class="list-inline font-20 font-weight-600 clearfix mb-5">
@@ -559,7 +542,7 @@
             <div class="item">
               <div class="causes bg-white maxwidth500 mb-30">
                 <div class="thumb">
-                  <img src="{{ asset('frontend') }}/images/project/2.jpg" alt="" class="img-fullwidth">
+                  <img src="{{ asset('frontend') }}/images/project/002.png" alt="" class="img-fullwidth">
                 </div>
                 <div class="causes-details clearfix border-bottom p-15 pt-15 pb-15">
                 <ul class="list-inline font-20 font-weight-600 clearfix mb-5">
@@ -580,7 +563,7 @@
             <div class="item">
               <div class="causes bg-white maxwidth500 mb-30">
                 <div class="thumb">
-                  <img src="{{ asset('frontend') }}/images/project/3.jpg" alt="" class="img-fullwidth">
+                  <img src="{{ asset('frontend') }}/images/project/003.png" alt="" class="img-fullwidth">
                 </div>
                 <div class="causes-details clearfix border-bottom p-15 pt-15 pb-15">
                 <ul class="list-inline font-20 font-weight-600 clearfix mb-5">
@@ -601,7 +584,7 @@
             <div class="item">
               <div class="causes bg-white maxwidth500 mb-30">
                 <div class="thumb">
-                  <img src="{{ asset('frontend') }}/images/project/4.jpg" alt="" class="img-fullwidth">
+                  <img src="{{ asset('frontend') }}/images/project/004.jpg" alt="" class="img-fullwidth">
                 </div>
                 <div class="causes-details clearfix border-bottom p-15 pt-15 pb-15">
                 <ul class="list-inline font-20 font-weight-600 clearfix mb-5">
@@ -622,7 +605,7 @@
             <div class="item">
               <div class="causes bg-white maxwidth500 mb-30">
                 <div class="thumb">
-                  <img src="{{ asset('frontend') }}/images/project/5.jpg" alt="" class="img-fullwidth">
+                  <img src="{{ asset('frontend') }}/images/project/001.png" alt="" class="img-fullwidth">
                 </div>
                 <div class="causes-details clearfix border-bottom p-15 pt-15 pb-15">
                 <ul class="list-inline font-20 font-weight-600 clearfix mb-5">
@@ -821,7 +804,7 @@
                   </div>
                 </div>
                 <div class="team-info bg-theme-colored">
-                  <h3 class="mt-0 text-white">Sakib Jacson</h3>
+                  <h3 class="mt-0 text-white">Sakib Mahtab</h3>
                   <ul class="styled-icons icon-circled icon-theme-colored">
                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                     <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -833,7 +816,7 @@
             <div class="col-xs-12 col-sm-6 col-md-4 mb-30">
               <div class="team-member clearfix">
                 <div class="team-thumb">
-                  <img alt="" src="{{ asset('frontend') }}/images/team/team3.jpg" class="img-fullwidth">
+                  <img alt="" src="{{ asset('frontend') }}/images/team/team1.jpg" class="img-fullwidth">
                   <div class="overlay">
                     <div class="content">
                       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea iste nihil ex libero ab esse, dignissimos maxime enim sint laborum.</p>
@@ -841,7 +824,7 @@
                   </div>
                 </div>
                 <div class="team-info bg-theme-colored">
-                  <h3 class="mt-0 text-white">Jerin Jacson</h3>
+                  <h3 class="mt-0 text-white">Zobaier Hosen</h3>
                   <ul class="styled-icons icon-circled icon-theme-colored">
                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                     <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -861,7 +844,7 @@
                   </div>
                 </div>
                 <div class="team-info bg-theme-colored">
-                  <h3 class="mt-0 text-white">Alex Jacobson</h3>
+                  <h3 class="mt-0 text-white">Osman Bin</h3>
                   <ul class="styled-icons icon-circled icon-theme-colored">
                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                     <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -882,7 +865,7 @@
           <div class="row">
             <div class="col-md-12">
               <h2 class="mt-0 text-white">How you can help us</h2>
-              <h2 class="text-white">Just call at <span class="text-theme-colored">(01) 234 5678</span> to make a donation</h2>
+              <h2 class="text-white">Just call at <span class="text-theme-colored">(+880) 1234 56789</span> to make a donation</h2>
             </div>
           </div>
         </div>
@@ -992,21 +975,28 @@
           <div class="col-md-12">
             <div class="pt-20">
               <div class="testimonial style1 owl-carousel-2col">
+
+              @forelse($testimonials as $testimonial)
                 <div class="item">
                   <div class="comment border-radius-15px">
-                    <p>Lorem ipsum dolor sit ametconse ctetur adipisicing elitvolup tatem error sit qui dolorem facilis. adipisicing elitvolup tatem error</p>
+                  <p>{{ strip_tags($testimonial->text_en) }}</p>
+
                   </div>
                   <div class="content mt-20">
                     <div class="thumb pull-right">
-                      <img class="img-circle" alt="" src="{{ asset('frontend') }}/images/testimonials/s1.jpg">
+                      <img class="img-circle" alt="" src="{{ asset('frontend') }}/images/testimonials/user.png">
                     </div>
                     <div class="patient-details text-right pull-right mr-20 mt-10">
-                      <h5 class="text-theme-colored">Jonathan Smith</h5>
-                      <h6 class="title">kode inc.</h6>
+                      <h5 class="text-theme-colored">{{ $testimonial->name }}</h5>
+                      <h6 class="title">{{ $testimonial->company }}</h6>
                     </div>
                   </div>
                 </div>
-                <div class="item">
+              @empty
+              <p>There no testimonials here</p>
+              @endforelse
+
+                {{--<div class="item">
                   <div class="comment border-radius-15px">
                     <p>Lorem ipsum dolor sit ametconse ctetur adipisicing elitvolup tatem error sit qui dolorem facilis. adipisicing elitvolup tatem error</p>
                   </div>
@@ -1033,7 +1023,7 @@
                       <h6 class="title">kode inc.</h6>
                     </div>
                   </div>
-                </div>
+                </div>--}}
               </div>
             </div>
           </div>
@@ -1080,7 +1070,7 @@
                 <!-- Portfolio Item Start -->
                 <div class="gallery-item">
                   <div class="thumb">
-                    <img alt="project" src="{{ asset('frontend') }}/images/gallery/gallery-md2.jpg" class="img-fullwidth">
+                    <img alt="project" src="{{ asset('frontend') }}/images/gallery/gallery-lg2.jpg" class="img-fullwidth">
                     <div class="overlay-shade"></div>
                     <div class="icons-holder">
                       <div class="icons-holder-inner">
@@ -1096,7 +1086,7 @@
                 <!-- Portfolio Item Start -->
                 <div class="gallery-item">
                   <div class="thumb">
-                    <img alt="project" src="{{ asset('frontend') }}/images/gallery/gallery-md3.jpg" class="img-fullwidth">
+                    <img alt="project" src="{{ asset('frontend') }}/images/gallery/gallery-lg3.jpg" class="img-fullwidth">
                     <div class="overlay-shade"></div>
                     <div class="icons-holder">
                       <div class="icons-holder-inner">
@@ -1213,7 +1203,7 @@
                     <div class="icons-holder">
                       <div class="icons-holder-inner">
                         <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                          <a href="{{ asset('frontend') }}/images/gallery/gallery-lg10.jpg"  data-lightbox-gallery="gallery"><i class="fa fa-picture-o"></i></a>
+                          <a href="{{ asset('frontend') }}/images/gallery/gallery-md10.jpg"  data-lightbox-gallery="gallery"><i class="fa fa-picture-o"></i></a>
                         </div>
                       </div>
                     </div>
@@ -1224,7 +1214,7 @@
                 <!-- Portfolio Item Start -->
                 <div class="gallery-item">
                   <div class="thumb">
-                    <img alt="project" src="{{ asset('frontend') }}/images/gallery/gallery-md11.jpg" class="img-fullwidth">
+                    <img alt="project" src="{{ asset('frontend') }}/images/gallery/gallery-lg11.jpg" class="img-fullwidth">
                     <div class="overlay-shade"></div>
                     <div class="icons-holder">
                       <div class="icons-holder-inner">
@@ -1245,7 +1235,7 @@
                     <div class="icons-holder">
                       <div class="icons-holder-inner">
                         <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                          <a href="{{ asset('frontend') }}/images/gallery/gallery-lg12.jpg"  data-lightbox-gallery="gallery"><i class="fa fa-picture-o"></i></a>
+                          <a href="{{ asset('frontend') }}/images/gallery/gallery-md12.jpg"  data-lightbox-gallery="gallery"><i class="fa fa-picture-o"></i></a>
                         </div>
                       </div>
                     </div>
@@ -1276,99 +1266,46 @@
         </div>
         <div class="section-content">
           <div class="row">
+
+            @forelse($newses as $news)
             <div class="col-xs-12 col-sm-6 col-md-4">
               <article class="post clearfix mb-sm-30 bg-silver-light">
                 <div class="entry-header">
                   <div class="post-thumb thumb"> 
-                    <img src="{{ asset('frontend') }}/images/blog/1.jpg" alt="" class="img-responsive img-fullwidth"> 
+                    <img src="{{ route('imagecache', ['template' => 'cpmd', 'filename' => $news->fi()]) }}" alt="{{ $news->title }}" class="img-responsive img-fullwidth"> 
                   </div>
                 </div>
-                 <div class="bg-theme-colored p-5 text-center pt-10 pb-10">
+                 {{--<div class="bg-theme-colored p-5 text-center pt-10 pb-10">
                     <span class="mb-10 text-white mr-10 font-13"><i class="fa fa-share-alt mr-5 text-white"></i>24 Share</span>
                     <span class="mb-10 text-white mr-10 font-13"><i class="fa fa-commenting-o mr-5 text-white"></i> 214 Comments</span>
                     <span class="mb-10 text-white mr-10 font-13"><i class="fa fa-heart-o mr-5 text-white"></i> 895 Likes</span>
-                 </div>
+                 </div>--}}
                 <div class="entry-content p-20 pr-10">
                   <div class="entry-meta media mt-0 no-bg no-border">
                     <div class="entry-date media-left text-center flip bg-theme-colored pt-5 pr-15 pb-5 pl-15">
-                      <ul>
-                        <li class="font-16 text-white font-weight-600 border-bottom">28</li>
-                        <li class="font-12 text-white text-uppercase">Feb</li>
-                      </ul>
+                    <ul>
+                        <li class="font-16 text-white font-weight-600">
+                            {{ $news->created_at->format('d') }}
+                        </li>
+                        <li class="font-12 text-white text-uppercase">
+                            {{ $news->created_at->format('M') }}
+                        </li>
+                    </ul>
                     </div>
                     <div class="media-body pl-15">
                       <div class="event-content pull-left flip">
-                        <h4 class="entry-title text-white text-uppercase m-0 mt-5"><a href="#">This is a standard post with thumbnail</a></h4>                      
+                        <h4 class="entry-title text-white text-uppercase m-0 mt-5"><a href="{{ route('news.details', $news->id) }}">{{ $news->title }}</a></h4>                      
                       </div>
                     </div>
                   </div>
-                  <p class="mt-10">Lorem ipsum dolor sit amet, consectetur adipisi cing elit. Molestias eius illum libero dolor nobis deleniti, sint assumenda. Pariatur iste veritatis excepturi, ipsa optio nobis.</p>
-                  <a href="#" class="btn btn-default btn-sm btn-theme-colored mt-10">Read more</a>
+                  <p class="mt-10">{{ \Illuminate\Support\Str::limit(strip_tags($news->excerpt), 120, '...') }}</p>
+                  <a href="{{ route('news.details', $news->id) }}" class="btn btn-default btn-sm btn-theme-colored mt-10">Read more</a>
                 </div>
               </article>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-              <article class="post clearfix mb-sm-30 bg-silver-light">
-                <div class="entry-header">
-                  <div class="post-thumb thumb"> 
-                    <img src="{{ asset('frontend') }}/images/blog/2.jpg" alt="" class="img-responsive img-fullwidth"> 
-                  </div>
-                </div>
-                 <div class="bg-theme-colored p-5 text-center pt-10 pb-10">
-                    <span class="mb-10 text-white mr-10 font-13"><i class="fa fa-share-alt mr-5 text-white"></i>24 Share</span>
-                    <span class="mb-10 text-white mr-10 font-13"><i class="fa fa-commenting-o mr-5 text-white"></i> 214 Comments</span>
-                    <span class="mb-10 text-white mr-10 font-13"><i class="fa fa-heart-o mr-5 text-white"></i> 895 Likes</span>
-                 </div>
-                <div class="entry-content p-20 pr-10">
-                  <div class="entry-meta media mt-0 no-bg no-border">
-                    <div class="entry-date media-left text-center flip bg-theme-colored pt-5 pr-15 pb-5 pl-15">
-                      <ul>
-                        <li class="font-16 text-white font-weight-600 border-bottom">28</li>
-                        <li class="font-12 text-white text-uppercase">Feb</li>
-                      </ul>
-                    </div>
-                    <div class="media-body pl-15">
-                      <div class="event-content pull-left flip">
-                        <h4 class="entry-title text-white text-uppercase m-0 mt-5"><a href="#">This is a standard post with thumbnail</a></h4>                      
-                      </div>
-                    </div>
-                  </div>
-                  <p class="mt-10">Lorem ipsum dolor sit amet, consectetur adipisi cing elit. Molestias eius illum libero dolor nobis deleniti, sint assumenda. Pariatur iste veritatis excepturi, ipsa optio nobis.</p>
-                  <a href="#" class="btn btn-default btn-sm btn-theme-colored mt-10">Read more</a>
-                </div>
-              </article>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-              <article class="post clearfix mb-sm-30 bg-silver-light">
-                <div class="entry-header">
-                  <div class="post-thumb thumb"> 
-                    <img src="{{ asset('frontend') }}/images/blog/3.jpg" alt="" class="img-responsive img-fullwidth"> 
-                  </div>
-                </div>
-                 <div class="bg-theme-colored p-5 text-center pt-10 pb-10">
-                    <span class="mb-10 text-white mr-10 font-13"><i class="fa fa-share-alt mr-5 text-white"></i>24 Share</span>
-                    <span class="mb-10 text-white mr-10 font-13"><i class="fa fa-commenting-o mr-5 text-white"></i> 214 Comments</span>
-                    <span class="mb-10 text-white mr-10 font-13"><i class="fa fa-heart-o mr-5 text-white"></i> 895 Likes</span>
-                 </div>
-                <div class="entry-content p-20 pr-10">
-                  <div class="entry-meta media mt-0 no-bg no-border">
-                    <div class="entry-date media-left text-center flip bg-theme-colored pt-5 pr-15 pb-5 pl-15">
-                      <ul>
-                        <li class="font-16 text-white font-weight-600 border-bottom">28</li>
-                        <li class="font-12 text-white text-uppercase">Feb</li>
-                      </ul>
-                    </div>
-                    <div class="media-body pl-15">
-                      <div class="event-content pull-left flip">
-                        <h4 class="entry-title text-white text-uppercase m-0 mt-5"><a href="#">This is a standard post with thumbnail</a></h4>                      
-                      </div>
-                    </div>
-                  </div>
-                  <p class="mt-10">Lorem ipsum dolor sit amet, consectetur adipisi cing elit. Molestias eius illum libero dolor nobis deleniti, sint assumenda. Pariatur iste veritatis excepturi, ipsa optio nobis.</p>
-                  <a href="#" class="btn btn-default btn-sm btn-theme-colored mt-10">Read more</a>
-                </div>
-              </article>
-            </div>
+            @empty 
+            <p>There have no news here </p>
+            @endforelse
           </div>
         </div>
       </div>

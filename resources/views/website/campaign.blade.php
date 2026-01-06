@@ -49,7 +49,7 @@
                   <img src="{{ asset('frontend') }}/images/bg/bg2.jpg" alt="">
                 </div>
                 <div class="item">
-                  <img src="{{ asset('frontend') }}/images/bg/bg9.jpg" alt="">
+                  <img src="{{ asset('frontend') }}/images/bg/bg19.jpg" alt="">
                 </div>
               </div>
             </div>
@@ -101,7 +101,7 @@
             <div class="col-sm-4 col-md-4 col-lg-4">
               <div class="schedule-box maxwidth500 bg-theme-colored mb-30">
                 <div class="thumb">
-                  <img class="img-fullwidth" alt="" src="{{ asset('frontend') }}/images/gallery/2.jpg">
+                  <img class="img-fullwidth" alt="" src="{{ asset('frontend') }}/images/gallery/h1.png">
                 </div>
                 <div class="schedule-details clearfix p-15 pt-10">
                   <h3 class="title mt-0"><a href="#" class="text-white">Investing in Childhood</a></h3>
@@ -148,7 +148,7 @@
             <div class="col-sm-4 col-md-4 col-lg-4">
               <div class="schedule-box maxwidth500 bg-theme-colored mb-30">
                 <div class="thumb">
-                  <img class="img-fullwidth" alt="" src="{{ asset('frontend') }}/images/gallery/2.jpg">
+                  <img class="img-fullwidth" alt="" src="{{ asset('frontend') }}/images/gallery/h1.png">
                 </div>
                 <div class="schedule-details clearfix p-15 pt-10">
                   <h3 class="title mt-0"><a href="#" class="text-white">Investing in Childhood</a></h3>

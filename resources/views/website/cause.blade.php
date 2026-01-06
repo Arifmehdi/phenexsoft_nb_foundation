@@ -37,7 +37,7 @@
           <div class="col-sm-6 col-md-4 col-lg-4">
             <div class="causes bg-white maxwidth500 mb-30">
               <div class="thumb">
-                <img src="{{ asset('frontend') }}/images/project/1.jpg" alt="" class="img-fullwidth">
+                <img src="{{ asset('frontend') }}/images/project/001.png" alt="" class="img-fullwidth">
                 <div class="overlay-donate-now">
                   <a href="page-donate.html" class="btn btn-dark btn-theme-colored btn-flat btn-sm pull-left mt-10">Donate <i class="flaticon-charity-make-a-donation font-16 ml-5"></i></a>
                 </div>
@@ -61,7 +61,7 @@
           <div class="col-sm-6 col-md-4 col-lg-4">
             <div class="causes bg-white maxwidth500 mb-30">
               <div class="thumb">
-                <img src="{{ asset('frontend') }}/images/project/2.jpg" alt="" class="img-fullwidth">
+                <img src="{{ asset('frontend') }}/images/project/002.png" alt="" class="img-fullwidth">
                 <div class="overlay-donate-now">
                   <a href="page-donate.html" class="btn btn-dark btn-theme-colored btn-flat btn-sm pull-left mt-10">Donate <i class="flaticon-charity-make-a-donation font-16 ml-5"></i></a>
                 </div>
@@ -85,7 +85,7 @@
           <div class="col-sm-6 col-md-4 col-lg-4">
             <div class="causes bg-white maxwidth500 mb-30">
               <div class="thumb">
-                <img src="{{ asset('frontend') }}/images/project/3.jpg" alt="" class="img-fullwidth">
+                <img src="{{ asset('frontend') }}/images/project/003.png" alt="" class="img-fullwidth">
                 <div class="overlay-donate-now">
                   <a href="page-donate.html" class="btn btn-dark btn-theme-colored btn-flat btn-sm pull-left mt-10">Donate <i class="flaticon-charity-make-a-donation font-16 ml-5"></i></a>
                 </div>
@@ -109,7 +109,7 @@
           <div class="col-sm-6 col-md-4 col-lg-4">
             <div class="causes bg-white maxwidth500 mb--sm-30">
               <div class="thumb">
-                <img src="{{ asset('frontend') }}/images/project/4.jpg" alt="" class="img-fullwidth">
+                <img src="{{ asset('frontend') }}/images/project/004.jpg" alt="" class="img-fullwidth">
                 <div class="overlay-donate-now">
                   <a href="page-donate.html" class="btn btn-dark btn-theme-colored btn-flat btn-sm pull-left mt-10">Donate <i class="flaticon-charity-make-a-donation font-16 ml-5"></i></a>
                 </div>
@@ -133,7 +133,7 @@
           <div class="col-sm-6 col-md-4 col-lg-4">
             <div class="causes bg-white maxwidth500 mb-sm-30">
               <div class="thumb">
-                <img src="{{ asset('frontend') }}/images/project/5.jpg" alt="" class="img-fullwidth">
+                <img src="{{ asset('frontend') }}/images/project/002.png" alt="" class="img-fullwidth">
                 <div class="overlay-donate-now">
                   <a href="page-donate.html" class="btn btn-dark btn-theme-colored btn-flat btn-sm pull-left mt-10">Donate <i class="flaticon-charity-make-a-donation font-16 ml-5"></i></a>
                 </div>
@@ -157,7 +157,7 @@
           <div class="col-sm-6 col-md-4 col-lg-4">
             <div class="causes bg-white maxwidth500 mb-sm-30">
               <div class="thumb">
-                <img src="{{ asset('frontend') }}/images/project/6.jpg" alt="" class="img-fullwidth">
+                <img src="{{ asset('frontend') }}/images/project/003.png" alt="" class="img-fullwidth">
                 <div class="overlay-donate-now">
                   <a href="page-donate.html" class="btn btn-dark btn-theme-colored btn-flat btn-sm pull-left mt-10">Donate <i class="flaticon-charity-make-a-donation font-16 ml-5"></i></a>
                 </div>

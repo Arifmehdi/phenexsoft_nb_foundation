@@ -12,19 +12,9 @@
 <meta property="og:type" content="website">
 @endsection
 @section('content')
+
     <!-- Section: inner-header -->
-    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="{{ asset('frontend') }}/images/bg/bg1.jpg">
-      <div class="container pt-100 pb-50">
-        <!-- Section Content -->
-        <div class="section-content pt-100">
-          <div class="row"> 
-            <div class="col-md-12">
-              <h3 class="title text-white">Single Post</h3>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <x-breadcrumb slug="{{ $news->title }}" image="{{ asset('frontend') }}/images/bg/bg1.jpg"/>
 
     <!-- Section: Blog -->
     <section>
@@ -34,7 +24,7 @@
             <div class="blog-posts single-post">
               <article class="post clearfix mb-0">
                 <div class="entry-header">
-                  <div class="post-thumb thumb"> <img src="{{ asset('frontend') }}/images/bg/bg2.jpg" alt="" class="img-responsive img-fullwidth"> </div>
+                  <div class="post-thumb thumb"> <img src="{{ route('imagecache', ['template' => 'original', 'filename' => $news->fi()]) }}" alt="{{ $news->title }}" class="img-responsive img-fullwidth"> </div>
                 </div>
                 <div class="entry-content">
                   <div class="entry-meta media no-bg no-border mt-15 pb-20">
@@ -46,19 +36,13 @@
                     </div>
                     <div class="media-body pl-15">
                       <div class="event-content pull-left flip">
-                        <h4 class="entry-title text-white text-uppercase m-0"><a href="#">Post title here</a></h4>
-                        <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-commenting-o mr-5 text-theme-colored"></i> 214 Comments</span>
-                        <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-heart-o mr-5 text-theme-colored"></i> 895 Likes</span>
+                        <h4 class="entry-title text-white text-uppercase m-0"><a href="#">{{ $news->title }}</a></h4>
+                        {{--<span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-commenting-o mr-5 text-theme-colored"></i> 214 Comments</span>
+                        <span class="mb-10 text-gray-darkgray mr-10 font-13"><i class="fa fa-heart-o mr-5 text-theme-colored"></i> 895 Likes</span>--}}
                       </div>
                     </div>
                   </div>
-                  <p class="mb-15">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                  <p class="mb-15">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                  <blockquote class="theme-colored pt-20 pb-20">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                    <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
-                  </blockquote>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna et sed aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                  {!! $news->description !!}
                   <div class="mt-30 mb-0">
                     <h5 class="pull-left mt-10 mr-20 text-theme-colored">Share:</h5>
                     <ul class="styled-icons icon-circled m-0">
@@ -193,7 +177,7 @@
                   </form>
                 </div>
               </div>
-              <div class="widget">
+              {{--<div class="widget">
                 <h5 class="widget-title line-bottom">Categories</h5>
                 <div class="categories">
                   <ul class="list list-border angle-double-right">
@@ -204,40 +188,32 @@
                     <li><a href="#">Personal<span>(16)</span></a></li>
                   </ul>
                 </div>
-              </div>
+              </div>--}}
               <div class="widget">
                 <h5 class="widget-title line-bottom">Latest News</h5>
                 <div class="latest-posts">
+
+                @forelse($relatedPosts as $related)
                   <article class="post media-post clearfix pb-0 mb-10">
-                    <a class="post-thumb" href="#"><img src="https://placehold.it/75x75" alt=""></a>
+                    <a class="post-thumb" href="#"><img src="{{ route('imagecache', ['template' => 'cpmd', 'filename' => $related->fi()]) }}" alt="{{ $related->title }}"></a>
                     <div class="post-right">
-                      <h5 class="post-title mt-0"><a href="#">Sustainable Construction</a></h5>
-                      <p>Lorem ipsum dolor sit amet adipisicing elit...</p>
+                      <h5 class="post-title mt-0"><a href="#">{{ $related->title }}</a></h5>
+                      <p>{{ \Illuminate\Support\Str::limit(strip_tags($related->excerpt), 120, '...') }}</p>
                     </div>
                   </article>
-                  <article class="post media-post clearfix pb-0 mb-10">
-                    <a class="post-thumb" href="#"><img src="https://placehold.it/75x75" alt=""></a>
-                    <div class="post-right">
-                      <h5 class="post-title mt-0"><a href="#">Industrial Coatings</a></h5>
-                      <p>Lorem ipsum dolor sit amet adipisicing elit...</p>
-                    </div>
-                  </article>
-                  <article class="post media-post clearfix pb-0 mb-10">
-                    <a class="post-thumb" href="#"><img src="https://placehold.it/75x75" alt=""></a>
-                    <div class="post-right">
-                      <h5 class="post-title mt-0"><a href="#">Storefront Installations</a></h5>
-                      <p>Lorem ipsum dolor sit amet adipisicing elit...</p>
-                    </div>
-                  </article>
+                @empty 
+                <p>There no latest news here </p>
+                @endforelse
+
                 </div>
               </div>
-              <div class="widget">
+              {{--<div class="widget">
                 <h5 class="widget-title line-bottom">Photos from Flickr</h5>
                 <div id="flickr-feed" class="clearfix">
                   <!-- Flickr Link -->
                   <script data-cfasync="false" src="../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/javascript" src="https://www.flickr.com/badge_code_v2.gne?count=9&amp;display=latest&amp;size=s&amp;layout=x&amp;source=user&amp;user=52617155@N08">
                   </script>
-                </div>
+                </div>--}}
               </div>
             </div>
           </div>

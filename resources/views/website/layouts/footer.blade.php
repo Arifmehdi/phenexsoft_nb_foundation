@@ -3,7 +3,15 @@
       <div class="row border-bottom-black">
         <div class="col-sm-6 col-md-3">
           <div class="widget dark">
-            <img class="mt-10 mb-20" alt="" src="{{ asset('frontend') }}/images/logo-wide-white-footer.png">
+              @if (app()->environment('local'))
+                <img class="mt-10 mb-20" alt="" src="{{ asset('frontend') }}/images/logo-wide-white-footer.png">
+              @else
+                  <img class="mt-10 mb-20" src="{{ route('imagecache', [
+                      'template' => 'original',
+                      'filename' => $ws->logo()
+                  ]) }}" alt="Logo">
+              @endif
+
             <p>{{ $ws->contact_address }}</p>
             <ul class="list-inline mt-5">
               <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-theme-colored mr-5"></i> <a class="text-gray" href="#">{{ $ws->contact_mobile }}</a> </li>

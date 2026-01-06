@@ -12,7 +12,7 @@
               <h3 class="font-28 text-white">{{ $slug ?? 'Default Title' }}</h2>
               <ol class="breadcrumb text-center text-black mt-10">
                 <li><a href="{{ route('home') }}">Home</a></li>
-                <li class="active text-theme-colored">Login</li>
+                <li class="active text-theme-colored">{{ $slug ?? 'Default Title' }}</li>
               </ol>
             </div>
           </div>

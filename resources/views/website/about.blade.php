@@ -46,13 +46,13 @@
             <div class="col-md-6">
               <div class="owl-carousel-1col" data-nav="true">
                 <div class="item">
-                  <img src="{{ asset('frontend') }}/images/about/5.jpg" alt="">
+                  <img src="{{ asset('frontend') }}/images/about/002.png" alt="">
                 </div>
                 <div class="item">
-                  <img src="{{ asset('frontend') }}/images/about/6.jpg" alt="">
+                  <img src="{{ asset('frontend') }}/images/about/001.png" alt="">
                 </div>
                 <div class="item">
-                  <img src="{{ asset('frontend') }}/images/about/7.jpg" alt="">
+                  <img src="{{ asset('frontend') }}/images/about/002.png" alt="">
                 </div>
               </div>
             </div>
@@ -196,9 +196,9 @@
           <div class="row">
             <div class="col-sm-6 col-md-3">
               <div class="team box-hover-effect effect3 border-1px border-bottom-theme-color-2px sm-text-center maxwidth400 mb-sm-30">
-                <div class="thumb"><img class="img-fullwidth" src="{{ asset('frontend') }}/images/team/5.jpg" alt=""></div>
+                <div class="thumb"><img class="img-fullwidth" src="{{ asset('frontend') }}/images/team/team1.jpg" alt=""></div>
                 <div class="content bg-white p-20 text-center">
-                  <h4 class="name mb-0 mt-0"><a class="text-theme-colored" href="#">Sakib John</a></h4>
+                  <h4 class="name mb-0 mt-0"><a class="text-theme-colored" href="#">Sakib Mahtab</a></h4>
                   <p>Student / Joined May'16</p>
                   <p class="mb-20">Lorem ipsum dolor sit amet, con amit sectetur adipisicing</p>
                   <ul class="styled-icons icon-dark icon-theme-colored icon-sm">
@@ -212,9 +212,9 @@
             </div>  
             <div class="col-sm-6 col-md-3">
               <div class="team box-hover-effect effect3 border-1px border-bottom-theme-color-2px sm-text-center maxwidth400 mb-sm-30">
-                <div class="thumb"><img class="img-fullwidth" src="{{ asset('frontend') }}/images/team/6.jpg" alt=""></div>
+                <div class="thumb"><img class="img-fullwidth" src="{{ asset('frontend') }}/images/team/team2.jpg" alt=""></div>
                 <div class="content bg-white p-20 text-center">
-                  <h4 class="name mb-0 mt-0"><a class="text-theme-colored" href="#">Fiona John</a></h4>
+                  <h4 class="name mb-0 mt-0"><a class="text-theme-colored" href="#">Zobaier Hosen</a></h4>
                   <p>Student / Joined May'16</p>
                   <p class="mb-20">Lorem ipsum dolor sit amet, con amit sectetur adipisicing</p>
                   <ul class="styled-icons icon-dark icon-theme-colored icon-sm">
@@ -228,9 +228,9 @@
             </div>
             <div class="col-sm-6 col-md-3">
               <div class="team box-hover-effect effect3 border-1px border-bottom-theme-color-2px sm-text-center maxwidth400 mb-sm-30">
-                <div class="thumb"><img class="img-fullwidth" src="{{ asset('frontend') }}/images/team/7.jpg" alt=""></div>
+                <div class="thumb"><img class="img-fullwidth" src="{{ asset('frontend') }}/images/team/team1.jpg" alt=""></div>
                 <div class="content bg-white p-20 text-center">
-                  <h4 class="name mb-0 mt-0"><a class="text-theme-colored" href="#">Ismail Smith</a></h4>
+                  <h4 class="name mb-0 mt-0"><a class="text-theme-colored" href="#">Ismail Hasan</a></h4>
                   <p>Student / Joined May'16</p>
                   <p class="mb-20">Lorem ipsum dolor sit amet, con amit sectetur adipisicing</p>
                   <ul class="styled-icons icon-dark icon-theme-colored icon-sm">
@@ -244,9 +244,9 @@
             </div>
             <div class="col-sm-6 col-md-3">
               <div class="team box-hover-effect effect3 border-1px border-bottom-theme-color-2px sm-text-center maxwidth400">
-                <div class="thumb"><img class="img-fullwidth" src="{{ asset('frontend') }}/images/team/8.jpg" alt=""></div>
+                <div class="thumb"><img class="img-fullwidth" src="{{ asset('frontend') }}/images/team/team2.jpg" alt=""></div>
                 <div class="content bg-white p-20 text-center">
-                  <h4 class="name mb-0 mt-0"><a class="text-theme-colored" href="#">Jerin Smith</a></h4>
+                  <h4 class="name mb-0 mt-0"><a class="text-theme-colored" href="#">Jerin Srimoti</a></h4>
                   <p>Student / Joined May'16</p>
                   <p class="mb-20">Lorem ipsum dolor sit amet, con amit sectetur adipisicing</p>
                   <ul class="styled-icons icon-dark icon-theme-colored icon-sm">

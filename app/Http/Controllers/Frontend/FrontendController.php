@@ -75,7 +75,7 @@ class FrontendController extends Controller
             ->select('id','name','designation','image','text_en','designation')
             ->get();
 
-        $data['newses'] = BlogPost::whereActive(true)->limit(5)->get();
+        $data['newses'] = BlogPost::whereActive(true)->limit(3)->get();
         $data['sliders'] = FrontSlider::whereActive(true)
             ->select('featured_image','title','description','link')
             ->get();
@@ -212,15 +212,16 @@ class FrontendController extends Controller
         return view('website.cause_details' );  
     }
 
-    public function blog()
+    public function news()
     {
-        return view('website.blog' );  
+        $blogs = BlogPost::paginate(12);
+        return view('website.blog' , compact('blogs'));  
     }
 
-    public function blog_details()
-    {
-        return view('website.blog_details' );  
-    }
+    // public function blog_details()
+    // {
+    //     return view('website.blog_details' );  
+    // }
 
     public function testimonial()
     {
@@ -474,14 +475,14 @@ class FrontendController extends Controller
 
 
 
-    public function news()
-    {
-        $data['news'] = BlogPost::whereActive(true)->whereStatus('published')->latest()->paginate(12);
-        return view('website.blog', $data);
-    }
+    // public function news()
+    // {
+    //     $data['news'] = BlogPost::whereActive(true)->whereStatus('published')->latest()->paginate(12);
+    //     return view('website.blog', $data);
+    // }
 
 
-    public function singleNews($id)
+    public function news_details($id)
     {
         $news = BlogPost::where('id', $id)->firstOrFail();
         if (!$news) {

@@ -5,7 +5,7 @@
     <section class="pt-5">
         <div class="card">
             <div class="card-header bg-info">
-                <div class="card-title">Edit How Works </div>
+                <div class="card-title">Edit Department </div>
             </div>
             <div class="card-body w3-light-gray">
                 <form action="{{ route('departments.update',$department->id) }}" method="POST" enctype="multipart/form-data">
@@ -14,8 +14,8 @@
                     <div class="row py-2">
                         <div class="col-12 col-md-9 m-auto card p-5">
                             <div class="form-group">
-                                <label for="exampleInputPassword1">How Works Title </label>
-                                <input type="text" class="form-control @error('name_en') is_invalid @enderror" id="" placeholder="Department Name (English)" name="name_en" value="{{ $department->name_en }}">
+                                <label for="exampleInputPassword1">Title </label>
+                                <input type="text" class="form-control @error('name_en') is_invalid @enderror" id="" placeholder="Title" name="name_en" value="{{ $department->name_en }}">
                                 @error('name_en')
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
