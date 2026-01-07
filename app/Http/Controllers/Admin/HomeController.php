@@ -14,6 +14,7 @@ use App\Models\Member;
 use App\Models\Order;
 use App\Models\Page;
 use App\Models\Product;
+use App\Models\Cause;
 use App\Models\Tag;
 use App\Models\User;
 use App\Models\ProductCategory;
@@ -23,12 +24,14 @@ class HomeController extends Controller
 {
     public function index(){
         menuSubmenu('dashboardM','dashboardSM');
-        $users = User::get()->count();
+        $membership = User::where('membership_type',1)->get()->count();
+        $volunteer = User::where('membership_type',2)->get()->count();
         $cat = ProductCategory::where('parent_id', null)->get()->count();
-        $productcount = Product::get()->count();
+        $news = BlogPost::get()->count();
+        $causes = Cause::get()->count();
         $orders = Order::get()->count();
         $products = Product::latest()->take(10)->get();
-        return view('admin.index',compact('users','cat','products', 'orders', 'productcount'));
+        return view('admin.index',compact('cat','products', 'orders', 'causes', 'volunteer', 'membership','news'));
     }
 
 

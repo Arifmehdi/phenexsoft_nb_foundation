@@ -12,15 +12,15 @@
             <div class="card w3-purple shadow-sm h-100">
                 <div class="card-body d-flex justify-content-between align-items-end">
                     <div>
-                        <h4 class="text-white mb-1">{{ $causes }}</h4>
-                        <h6 class="text-white mb-0">All Cause</h6>
+                        <h4 class="text-white mb-1">{{ $productcount }}</h4>
+                        <h6 class="text-white mb-0">All Products</h6>
                     </div>
                     <div style="width: 45px; height: 50px;">
                         <canvas id="chart-products" height="50"></canvas>
                     </div>
                 </div>
                 <div class="card-footer text-center border-top border-light">
-                    <a href="{{ route('admin.causes.index') }}" class="text-white">View All</a>
+                    <a href="{{ route('admin.productsAll') }}" class="text-white">View All</a>
                 </div>
             </div>
         </div>
@@ -30,15 +30,15 @@
             <div class="card w3-deep-purple shadow-sm h-100">
                 <div class="card-body d-flex justify-content-between align-items-end">
                     <div>
-                        <h4 class="text-white mb-1">{{ $membership }}</h4>
-                        <h6 class="text-white mb-0">All Membership</h6>
+                        <h4 class="text-white mb-1">{{ $orders }}</h4>
+                        <h6 class="text-white mb-0">All Orders</h6>
                     </div>
                     <div style="width: 45px; height: 50px;">
                         <canvas id="chart-orders" height="50"></canvas>
                     </div>
                 </div>
                 <div class="card-footer text-center border-top border-light">
-                    <a href="{{ route('admin.user') }}" class="text-white">View All</a>
+                    <a href="{{ route('admin.orderList') }}" class="text-white">View All</a>
                 </div>
             </div>
         </div>
@@ -48,15 +48,15 @@
             <div class="card w3-teal shadow-sm h-100">
                 <div class="card-body d-flex justify-content-between align-items-end">
                     <div>
-                        <h4 class="text-white mb-1">{{ $volunteer }}</h4>
-                        <h6 class="text-white mb-0">All Volunteer</h6>
+                        <h4 class="text-white mb-1">{{ $users }}</h4>
+                        <h6 class="text-white mb-0">All Users</h6>
                     </div>
                     <div style="width: 45px; height: 50px;">
                         <canvas id="chart-users" height="50"></canvas>
                     </div>
                 </div>
                 <div class="card-footer text-center border-top border-light">
-                    <a href="{{ route('admin.user') }}" class="text-white">View All</a>
+                    <a href="{{ route('admin.all_user') }}" class="text-white">View All</a>
                 </div>
             </div>
         </div>
@@ -66,15 +66,15 @@
             <div class="card w3-indigo shadow-sm h-100">
                 <div class="card-body d-flex justify-content-between align-items-end">
                     <div>
-                        <h4 class="text-white mb-1">{{ $news }}</h4>
-                        <h6 class="text-white mb-0">All News</h6>
+                        <h4 class="text-white mb-1">{{ $cat }}</h4>
+                        <h6 class="text-white mb-0">All Categories</h6>
                     </div>
                     <div style="width: 45px; height: 50px;">
                         <canvas id="chart-doctors" height="50"></canvas>
                     </div>
                 </div>
                 <div class="card-footer text-center border-top border-light">
-                    <a href="{{ route('news.index') }}" class="text-white">View All</a>
+                    <a href="{{ route('admin.productCategoriesAll') }}" class="text-white">View All</a>
                 </div>
             </div>
         </div>
