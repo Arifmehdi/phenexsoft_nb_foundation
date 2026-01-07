@@ -68,125 +68,38 @@
             </div>
           </div>
           <div class="row mt-30">
+            @forelse($causes as $cause)
             <div class="col-sm-4 col-md-4 col-lg-4">
               <div class="schedule-box maxwidth500 bg-theme-colored mb-30">
                 <div class="thumb">
-                  <img class="img-fullwidth" alt="" src="{{ asset('frontend') }}/images/gallery/4.jpg">
+                  @if($cause->image)
+                    <img class="img-fullwidth" alt="{{ $cause->title }}" src="{{ asset('storage/' . $cause->image) }}">
+                  @else
+                    <img class="img-fullwidth" alt="No Image" src="{{ asset('frontend') }}/images/gallery/no-image.png">
+                  @endif
                 </div>
                 <div class="schedule-details clearfix p-15 pt-10">
-                  <h3 class="title mt-0"><a href="#" class="text-white">Investing in Childhood</a></h3>
+                  <h3 class="title mt-0"><a href="{{ route('cause.details', $cause->slug) }}" class="text-white">{{ $cause->title }}</a></h3>
                   <div class="clearfix"></div>
-                  <p class="mt-10 text-white">Lorem ipsum dolor sit amet elit. Cum veritatis sequi nulla nihil, dolor voluptatum nemo adipisci eligendi! Sed nisi perferendis, totam harum dicta.</p>
+                  <p class="mt-10 text-white">{{ $cause->short_description }}</p>
                   <div class="mt-10">
-                   <a href="#" class="btn btn-default btn-sm mt-10">Details</a>
+                   <a href="{{ route('cause.details', $cause->slug) }}" class="btn btn-default btn-sm mt-10">Details</a>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-sm-4 col-md-4 col-lg-4">
-              <div class="schedule-box maxwidth500 bg-theme-colored mb-30">
-                <div class="thumb">
-                  <img class="img-fullwidth" alt="" src="{{ asset('frontend') }}/images/gallery/1.jpg">
-                </div>
-                <div class="schedule-details clearfix p-15 pt-10">
-                  <h3 class="title mt-0"><a href="#" class="text-white">Investing in Childhood</a></h3>
-                  <div class="clearfix"></div>
-                  <p class="mt-10 text-white">Lorem ipsum dolor sit amet elit. Cum veritatis sequi nulla nihil, dolor voluptatum nemo adipisci eligendi! Sed nisi perferendis, totam harum dicta.</p>
-                  <div class="mt-10">
-                   <a href="#" class="btn btn-default btn-sm mt-10">Details</a>
-                  </div>
-                </div>
-              </div>
+            @empty
+            <div class="col-md-12">
+                <p>No active campaigns found.</p>
             </div>
-            <div class="col-sm-4 col-md-4 col-lg-4">
-              <div class="schedule-box maxwidth500 bg-theme-colored mb-30">
-                <div class="thumb">
-                  <img class="img-fullwidth" alt="" src="{{ asset('frontend') }}/images/gallery/h1.png">
-                </div>
-                <div class="schedule-details clearfix p-15 pt-10">
-                  <h3 class="title mt-0"><a href="#" class="text-white">Investing in Childhood</a></h3>
-                  <div class="clearfix"></div>
-                  <p class="mt-10 text-white">Lorem ipsum dolor sit amet elit. Cum veritatis sequi nulla nihil, dolor voluptatum nemo adipisci eligendi! Sed nisi perferendis, totam harum dicta.</p>
-                  <div class="mt-10">
-                   <a href="#" class="btn btn-default btn-sm mt-10">Details</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-4 col-md-4 col-lg-4">
-              <div class="schedule-box maxwidth500 bg-theme-colored mb-30">
-                <div class="thumb">
-                  <img class="img-fullwidth" alt="" src="{{ asset('frontend') }}/images/gallery/4.jpg">
-                </div>
-                <div class="schedule-details clearfix p-15 pt-10">
-                  <h3 class="title mt-0"><a href="#" class="text-white">Investing in Childhood</a></h3>
-                  <div class="clearfix"></div>
-                  <p class="mt-10 text-white">Lorem ipsum dolor sit amet elit. Cum veritatis sequi nulla nihil, dolor voluptatum nemo adipisci eligendi! Sed nisi perferendis, totam harum dicta.</p>
-                  <div class="mt-10">
-                   <a href="#" class="btn btn-default btn-sm mt-10">Details</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-4 col-md-4 col-lg-4">
-              <div class="schedule-box maxwidth500 bg-theme-colored mb-30">
-                <div class="thumb">
-                  <img class="img-fullwidth" alt="" src="{{ asset('frontend') }}/images/gallery/1.jpg">
-                </div>
-                <div class="schedule-details clearfix p-15 pt-10">
-                  <h3 class="title mt-0"><a href="#" class="text-white">Investing in Childhood</a></h3>
-                  <div class="clearfix"></div>
-                  <p class="mt-10 text-white">Lorem ipsum dolor sit amet elit. Cum veritatis sequi nulla nihil, dolor voluptatum nemo adipisci eligendi! Sed nisi perferendis, totam harum dicta.</p>
-                  <div class="mt-10">
-                   <a href="#" class="btn btn-default btn-sm mt-10">Details</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-4 col-md-4 col-lg-4">
-              <div class="schedule-box maxwidth500 bg-theme-colored mb-30">
-                <div class="thumb">
-                  <img class="img-fullwidth" alt="" src="{{ asset('frontend') }}/images/gallery/h1.png">
-                </div>
-                <div class="schedule-details clearfix p-15 pt-10">
-                  <h3 class="title mt-0"><a href="#" class="text-white">Investing in Childhood</a></h3>
-                  <div class="clearfix"></div>
-                  <p class="mt-10 text-white">Lorem ipsum dolor sit amet elit. Cum veritatis sequi nulla nihil, dolor voluptatum nemo adipisci eligendi! Sed nisi perferendis, totam harum dicta.</p>
-                  <div class="mt-10">
-                   <a href="#" class="btn btn-default btn-sm mt-10">Details</a>
-                  </div>
-                </div>
-              </div>
-            </div>
+            @endforelse
           </div>
         </div>
       </div>
     </section>
     
     <!-- Divider: Clients -->
-    <section class="clients bg-theme-colored">
-      <div class="container pt-0 pb-0">
-        <div class="row">
-          <div class="col-md-12">
-            <!-- Section: Clients -->
-            <div class="owl-carousel-6col clients-logo transparent text-center">
-              <div class="item"> <a href="#"><img src="{{ asset('frontend') }}/images/clients/w1.png" alt=""></a></div>
-              <div class="item"> <a href="#"><img src="{{ asset('frontend') }}/images/clients/w2.png" alt=""></a></div>
-              <div class="item"> <a href="#"><img src="{{ asset('frontend') }}/images/clients/w3.png" alt=""></a></div>
-              <div class="item"> <a href="#"><img src="{{ asset('frontend') }}/images/clients/w4.png" alt=""></a></div>
-              <div class="item"> <a href="#"><img src="{{ asset('frontend') }}/images/clients/w5.png" alt=""></a></div>
-              <div class="item"> <a href="#"><img src="{{ asset('frontend') }}/images/clients/w6.png" alt=""></a></div>
-              <div class="item"> <a href="#"><img src="{{ asset('frontend') }}/images/clients/w3.png" alt=""></a></div>
-              <div class="item"> <a href="#"><img src="{{ asset('frontend') }}/images/clients/w4.png" alt=""></a></div>
-              <div class="item"> <a href="#"><img src="{{ asset('frontend') }}/images/clients/w5.png" alt=""></a></div>
-              <div class="item"> <a href="#"><img src="{{ asset('frontend') }}/images/clients/w6.png" alt=""></a></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <x-brand-slider />
 
 @endsection
 

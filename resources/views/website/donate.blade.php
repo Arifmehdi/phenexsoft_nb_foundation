@@ -16,19 +16,9 @@
 @endpush
 
 @section('content')
+
     <!-- Section: inner-header -->
-    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="{{ asset('frontend') }}/images/bg/bg1.jpg">
-      <div class="container pt-100 pb-50">
-        <!-- Section Content -->
-        <div class="section-content pt-100">
-          <div class="row"> 
-            <div class="col-md-12">
-              <h3 class="title text-white">Donate</h3>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <x-breadcrumb slug="Donate" image="{{ asset('frontend') }}/images/bg/bg1.jpg"/>
 
     <!-- Section: DonetForm & Testimonials -->
     <section>
@@ -279,7 +269,28 @@
             <div class="col-xs-12 col-sm-6 col-md-6">
               <h3 class="mt-0 line-bottom">Testimonials</h3>
               <div class="testimonial style1 owl-carousel-1col owl-nav-top">
+
+              
+              @forelse($testimonials as $testimonial)  
                 <div class="item">
+                  <div class="comment bg-theme-colored">
+                    <p>{{ strip_tags($testimonial->text_en) }}</p>
+                  </div>
+                  <div class="content mt-20">
+                    <div class="thumb pull-right">
+                      <img class="img-circle" alt="" src="{{ asset('frontend') }}/images/testimonials/user.png">
+                    </div>
+                    <div class="patient-details text-right pull-right mr-20 mt-10">
+                      <h5 class="author text-theme-colored">{{ $testimonial->name }}</h5>
+                      <h6 class="title">{{ $testimonial->company }}</h6>
+                    </div>
+                  </div>
+                </div>
+              @empty
+              <p>There no testimonials here</p>
+              @endforelse
+
+                {{--<div class="item">
                   <div class="comment bg-theme-colored">
                     <p>Lorem ipsum dolor sit ametconse ctetur adipisicing elitvolup tatem error sit qui dolorem facilis.</p>
                   </div>
@@ -293,6 +304,7 @@
                     </div>
                   </div>
                 </div>
+                                
                 <div class="item">
                   <div class="comment bg-theme-colored">
                     <p>Lorem ipsum dolor sit ametconse ctetur adipisicing elitvolup tatem error sit qui dolorem facilis.</p>
@@ -306,21 +318,7 @@
                       <h6 class="title">cici inc.</h6>
                     </div>
                   </div>
-                </div>
-                <div class="item">
-                  <div class="comment bg-theme-colored">
-                    <p>Lorem ipsum dolor sit ametconse ctetur adipisicing elitvolup tatem error sit qui dolorem facilis.</p>
-                  </div>
-                  <div class="content mt-20">
-                    <div class="thumb pull-right">
-                      <img class="img-circle" alt="" src="{{ asset('frontend') }}/images/testimonials/s1.jpg">
-                    </div>
-                    <div class="patient-details text-right pull-right mr-20 mt-10">
-                      <h5 class="author text-theme-colored">Jonathan Smith</h5>
-                      <h6 class="title">cici inc.</h6>
-                    </div>
-                  </div>
-                </div>
+                </div>--}}
               </div>
             </div>
           </div>
@@ -371,14 +369,23 @@
           </div>
         </div>
         <div class="row multi-row-clearfix">
+
+        @forelse($causes as $cause)
           <div class="col-sm-6 col-md-3 col-lg-3">
             <div class="causes bg-white maxwidth500 mb-30">
+              <a href="{{ route('cause.details', $cause->slug) }}">
               <div class="thumb">
-                <img src="{{ asset('frontend') }}/images/project/1.jpg" alt="" class="img-fullwidth">
+                  @if($cause->image)
+                    <img src="{{ asset('storage/' . $cause->image) }}" alt="{{ $cause->title }}" class="img-fullwidth">
+                  @else
+                    <img src="{{ asset('frontend') }}/images/project/no-image.png" alt="No Image" class="img-fullwidth">
+                  @endif
+                  
                 <div class="overlay-donate-now">
-                  <a href="page-donate.html" class="btn btn-dark btn-theme-colored btn-flat btn-sm pull-left mt-10">Donate <i class="flaticon-charity-make-a-donation font-16 ml-5"></i></a>
+                  <a href="{{ route('donate') }}" class="btn btn-dark btn-theme-colored btn-flat btn-sm pull-left mt-10">Donate <i class="flaticon-charity-make-a-donation font-16 ml-5"></i></a>
                 </div>
               </div>
+              </a>
               <div class="causes-details clearfix  border-bottom-theme-color-1px p-15 pt-10 pb-10">
                 <h5 class="font-weight-600 font-16"><a href="page-single-cause.html">Education for Childreen</a></h5>
                 <p>Lorem ipsum dolor sit amet, consect adipisicing elit Praesent</p>
@@ -395,78 +402,11 @@
               </div>
             </div>
           </div>
-          <div class="col-sm-6 col-md-3 col-lg-3">
-            <div class="causes bg-white maxwidth500 mb-30">
-              <div class="thumb">
-                <img src="{{ asset('frontend') }}/images/project/2.jpg" alt="" class="img-fullwidth">
-                <div class="overlay-donate-now">
-                  <a href="page-donate.html" class="btn btn-dark btn-theme-colored btn-flat btn-sm pull-left mt-10">Donate <i class="flaticon-charity-make-a-donation font-16 ml-5"></i></a>
-                </div>
-              </div>
-              <div class="causes-details clearfix  border-bottom-theme-color-1px p-15 pt-10 pb-10">
-                <h5 class="font-weight-600 font-16"><a href="page-single-cause.html">Education for Childreen</a></h5>
-                <p>Lorem ipsum dolor sit amet, consect adipisicing elit Praesent</p>
-                <div class="progress-item mt-0">
-                  <div class="progress mb-0">
-                    <div data-percent="84" class="progress-bar"><span class="percent">0</span></div>
-                  </div>
-                </div>
-                <ul class="list-inline project-conditions mt-20 text-center m-0 p-10">
-                  <li class="target-fund text-theme-colored"><strong>$120,000</strong>Target</li>
-                  <li class="day text-theme-colored"><i class="flaticon-charity-hand-holding-a-heart font-30"></i></li>
-                  <li class="raised text-theme-colored"><strong>$65,000</strong>Raised</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-3 col-lg-3">
-            <div class="causes bg-white maxwidth500 mb-30">
-              <div class="thumb">
-                <img src="{{ asset('frontend') }}/images/project/3.jpg" alt="" class="img-fullwidth">
-                <div class="overlay-donate-now">
-                  <a href="page-donate.html" class="btn btn-dark btn-theme-colored btn-flat btn-sm pull-left mt-10">Donate <i class="flaticon-charity-make-a-donation font-16 ml-5"></i></a>
-                </div>
-              </div>
-              <div class="causes-details clearfix  border-bottom-theme-color-1px p-15 pt-10 pb-10">
-                <h5 class="font-weight-600 font-16"><a href="page-single-cause.html">Education for Childreen</a></h5>
-                <p>Lorem ipsum dolor sit amet, consect adipisicing elit Praesent</p>
-                <div class="progress-item mt-0">
-                  <div class="progress mb-0">
-                    <div data-percent="84" class="progress-bar"><span class="percent">0</span></div>
-                  </div>
-                </div>
-                <ul class="list-inline project-conditions mt-20 text-center m-0 p-10">
-                  <li class="target-fund text-theme-colored"><strong>$120,000</strong>Target</li>
-                  <li class="day text-theme-colored"><i class="flaticon-charity-hand-holding-a-heart font-30"></i></li>
-                  <li class="raised text-theme-colored"><strong>$65,000</strong>Raised</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-3 col-lg-3">
-            <div class="causes bg-white maxwidth500 mb-30">
-              <div class="thumb">
-                <img src="{{ asset('frontend') }}/images/project/4.jpg" alt="" class="img-fullwidth">
-                <div class="overlay-donate-now">
-                  <a href="page-donate.html" class="btn btn-dark btn-theme-colored btn-flat btn-sm pull-left mt-10">Donate <i class="flaticon-charity-make-a-donation font-16 ml-5"></i></a>
-                </div>
-              </div>
-              <div class="causes-details clearfix  border-bottom-theme-color-1px p-15 pt-10 pb-10">
-                <h5 class="font-weight-600 font-16"><a href="page-single-cause.html">Education for Childreen</a></h5>
-                <p>Lorem ipsum dolor sit amet, consect adipisicing elit Praesent</p>
-                <div class="progress-item mt-0">
-                  <div class="progress mb-0">
-                    <div data-percent="84" class="progress-bar"><span class="percent">0</span></div>
-                  </div>
-                </div>
-                <ul class="list-inline project-conditions mt-20 text-center m-0 p-10">
-                  <li class="target-fund text-theme-colored"><strong>$120,000</strong>Target</li>
-                  <li class="day text-theme-colored"><i class="flaticon-charity-hand-holding-a-heart font-30"></i></li>
-                  <li class="raised text-theme-colored"><strong>$65,000</strong>Raised</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+        @empty
+        <div class="col-12">
+          <p>There is no causes </p>
+        </div>
+        @endforelse 
         </div>
       </div>
     </section>

@@ -195,9 +195,9 @@
 
                 @forelse($relatedPosts as $related)
                   <article class="post media-post clearfix pb-0 mb-10">
-                    <a class="post-thumb" href="#"><img src="{{ route('imagecache', ['template' => 'cpmd', 'filename' => $related->fi()]) }}" alt="{{ $related->title }}"></a>
+                    <a class="post-thumb" href="{{ route('news.details', $related->id) }}"><img src="{{ route('imagecache', ['template' => 'cpmd', 'filename' => $related->fi()]) }}" alt="{{ $related->title }}"></a>
                     <div class="post-right">
-                      <h5 class="post-title mt-0"><a href="#">{{ $related->title }}</a></h5>
+                      <h5 class="post-title mt-0"><a href="{{ route('news.details', $related->id) }}">{{ $related->title }}</a></h5>
                       <p>{{ \Illuminate\Support\Str::limit(strip_tags($related->excerpt), 120, '...') }}</p>
                     </div>
                   </article>

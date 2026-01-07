@@ -6,10 +6,7 @@
               @if (app()->environment('local'))
                 <img class="mt-10 mb-20" alt="" src="{{ asset('frontend') }}/images/logo-wide-white-footer.png">
               @else
-                  <img class="mt-10 mb-20" src="{{ route('imagecache', [
-                      'template' => 'original',
-                      'filename' => $ws->logo()
-                  ]) }}" alt="Logo">
+                  <img class="mt-10 mb-20" src="{{ route('imagecache', ['template' => 'original', 'filename' => $ws->logo() ]) }}" alt="Logo">
               @endif
 
             <p>{{ $ws->contact_address }}</p>

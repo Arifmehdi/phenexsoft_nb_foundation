@@ -16,168 +16,82 @@
 @endpush
 
 @section('content')
-    <!-- Section: inner-header -->
-    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="{{ asset('frontend') }}/images/bg/bg1.jpg">
-      <div class="container pt-100 pb-50">
-        <!-- Section Content -->
-        <div class="section-content pt-100">
-          <div class="row"> 
-            <div class="col-md-12">
-              <h3 class="title text-white">Causes Grid</h3>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Section: Causes -->
+    <!-- Section: inner-header -->
+    <x-breadcrumb slug="Causes" image="{{ asset('frontend') }}/images/bg/bg1.jpg"/>
+
     <section>
       <div class="container">
         <div class="row multi-row-clearfix">
-          <div class="col-sm-6 col-md-4 col-lg-4">
-            <div class="causes bg-white maxwidth500 mb-30">
-              <div class="thumb">
-                <img src="{{ asset('frontend') }}/images/project/001.png" alt="" class="img-fullwidth">
-                <div class="overlay-donate-now">
-                  <a href="page-donate.html" class="btn btn-dark btn-theme-colored btn-flat btn-sm pull-left mt-10">Donate <i class="flaticon-charity-make-a-donation font-16 ml-5"></i></a>
+            @forelse($causes as $cause)
+            <div class="col-sm-6 col-md-4 col-lg-4">
+                <div class="causes bg-white maxwidth500 mb-30">
+
+                    <a href="{{ route('cause.details', $cause->slug) }}">
+                        <div class="thumb">
+                            @if($cause->image)
+                                <img src="{{ asset('storage/' . $cause->image) }}" alt="{{ $cause->title }}" class="img-fullwidth">
+                            @else
+                                <img src="{{ asset('frontend') }}/images/project/no-image.png" alt="No Image" class="img-fullwidth">
+                            @endif
+
+                            <div class="overlay-donate-now">
+                                <a href="{{ route('donate') }}" class="btn btn-dark btn-theme-colored btn-flat btn-sm pull-left mt-10">
+                                    Donate <i class="flaticon-charity-make-a-donation font-16 ml-5"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </a>
+
+                    @php
+                        $progress = ($cause->goal_amount > 0) 
+                            ? round(($cause->raised_amount / $cause->goal_amount) * 100) 
+                            : 0;
+                    @endphp
+
+                    <div class="progress-item mt-0">
+                        <div class="progress mb-0">
+                            <div data-percent="{{ $progress }}" class="progress-bar">
+                                <span class="percent">{{ $progress }}%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="causes-details clearfix border-bottom-theme-color-1px p-15 pt-10 pb-10">
+                        <h5 class="font-weight-600 font-16">
+                            <a href="{{ route('cause.details', $cause->slug) }}">
+                                {{ $cause->title }}
+                            </a>
+                        </h5>
+
+                        <p class="mt-20">
+                            {{ \Illuminate\Support\Str::limit(strip_tags($cause->short_description), 150, '...') }}
+                        </p>
+
+                        <ul class="list-inline project-conditions mt-20 text-center bg-theme-colored-transparent-1 m-0 p-10">
+                            <li class="target-fund text-theme-colored">
+                                <strong>${{ number_format($cause->goal_amount, 2) }}</strong> Target
+                            </li>
+
+                            <li class="day text-theme-colored">
+                                <i class="flaticon-charity-hand-holding-a-heart font-30"></i>
+                            </li>
+
+                            <li class="raised text-theme-colored">
+                                <strong>${{ number_format($cause->raised_amount, 2) }}</strong> Raised
+                            </li>
+                        </ul>
+                    </div>
+
                 </div>
-              </div>
-              <div class="progress-item mt-0">
-                <div class="progress mb-0">
-                  <div data-percent="84" class="progress-bar"><span class="percent">0</span></div>
-                </div>
-              </div>
-              <div class="causes-details clearfix  border-bottom-theme-color-1px p-15 pt-10 pb-10">
-                <h5 class="font-weight-600 font-16"><a href="page-single-cause.html">Education for Childreen</a></h5>
-                <p>Lorem ipsum dolor sit amet, consect adipisicing elit. Praesent quos sit.</p>
-                <ul class="list-inline project-conditions mt-20 text-center bg-theme-colored-transparent-1 m-0 p-10">
-                  <li class="target-fund text-theme-colored"><strong>$120,000</strong>Target</li>
-                  <li class="day text-theme-colored"><i class="flaticon-charity-hand-holding-a-heart font-30"></i></li>
-                  <li class="raised text-theme-colored"><strong>$65,000</strong>Raised</li>
-                </ul>
-              </div>
             </div>
-          </div>
-          <div class="col-sm-6 col-md-4 col-lg-4">
-            <div class="causes bg-white maxwidth500 mb-30">
-              <div class="thumb">
-                <img src="{{ asset('frontend') }}/images/project/002.png" alt="" class="img-fullwidth">
-                <div class="overlay-donate-now">
-                  <a href="page-donate.html" class="btn btn-dark btn-theme-colored btn-flat btn-sm pull-left mt-10">Donate <i class="flaticon-charity-make-a-donation font-16 ml-5"></i></a>
-                </div>
-              </div>
-              <div class="progress-item mt-0">
-                <div class="progress mb-0">
-                  <div data-percent="84" class="progress-bar"><span class="percent">0</span></div>
-                </div>
-              </div>
-              <div class="causes-details clearfix border-bottom-theme-color-1px p-15 pt-10 pb-10">
-                <h5 class="font-weight-600 font-16"><a href="page-single-cause.html">Sponsor a child today</a></h5>
-                <p>Lorem ipsum dolor sit amet, consect adipisicing elit. Praesent quos sit.</p>
-                <ul class="list-inline project-conditions mt-20 text-center bg-theme-colored-transparent-1 m-0 p-10">
-                  <li class="target-fund text-theme-colored"><strong>$120,000</strong>Target</li>
-                  <li class="day text-theme-colored"><i class="flaticon-charity-hand-holding-a-heart font-30"></i></li>
-                  <li class="raised text-theme-colored"><strong>$65,000</strong>Raised</li>
-                </ul>
-              </div>
+            @empty
+            <div class="col-md-12">
+                <p>No active causes found.</p>
             </div>
-          </div>
-          <div class="col-sm-6 col-md-4 col-lg-4">
-            <div class="causes bg-white maxwidth500 mb-30">
-              <div class="thumb">
-                <img src="{{ asset('frontend') }}/images/project/003.png" alt="" class="img-fullwidth">
-                <div class="overlay-donate-now">
-                  <a href="page-donate.html" class="btn btn-dark btn-theme-colored btn-flat btn-sm pull-left mt-10">Donate <i class="flaticon-charity-make-a-donation font-16 ml-5"></i></a>
-                </div>
-              </div>
-              <div class="progress-item mt-0">
-                <div class="progress mb-0">
-                  <div data-percent="84" class="progress-bar"><span class="percent">0</span></div>
-                </div>
-              </div>
-              <div class="causes-details clearfix border-bottom-theme-color-1px p-15 pt-10 pb-10">
-                <h5 class="font-weight-600 font-16"><a href="page-single-cause.html">Shelter for Poor Child</a></h5>
-                <p>Lorem ipsum dolor sit amet, consect adipisicing elit. Praesent quos sit.</p>
-                <ul class="list-inline project-conditions mt-20 text-center bg-theme-colored-transparent-1 m-0 p-10">
-                  <li class="target-fund text-theme-colored"><strong>$120,000</strong>Target</li>
-                  <li class="day text-theme-colored"><i class="flaticon-charity-hand-holding-a-heart font-30"></i></li>
-                  <li class="raised text-theme-colored"><strong>$65,000</strong>Raised</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4 col-lg-4">
-            <div class="causes bg-white maxwidth500 mb--sm-30">
-              <div class="thumb">
-                <img src="{{ asset('frontend') }}/images/project/004.jpg" alt="" class="img-fullwidth">
-                <div class="overlay-donate-now">
-                  <a href="page-donate.html" class="btn btn-dark btn-theme-colored btn-flat btn-sm pull-left mt-10">Donate <i class="flaticon-charity-make-a-donation font-16 ml-5"></i></a>
-                </div>
-              </div>
-              <div class="progress-item mt-0">
-                <div class="progress mb-0">
-                  <div data-percent="84" class="progress-bar"><span class="percent">0</span></div>
-                </div>
-              </div>
-              <div class="causes-details clearfix border-bottom-theme-color-1px p-15 pt-10 pb-10">
-                <h5 class="font-weight-600 font-16"><a href="page-single-cause.html">Happiness for orphan child</a></h5>
-                <p>Lorem ipsum dolor sit amet, consect adipisicing elit. Praesent quos sit.</p>
-                <ul class="list-inline project-conditions mt-20 text-center bg-theme-colored-transparent-1 m-0 p-10">
-                  <li class="target-fund text-theme-colored"><strong>$120,000</strong>Target</li>
-                  <li class="day text-theme-colored"><i class="flaticon-charity-hand-holding-a-heart font-30"></i></li>
-                  <li class="raised text-theme-colored"><strong>$65,000</strong>Raised</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4 col-lg-4">
-            <div class="causes bg-white maxwidth500 mb-sm-30">
-              <div class="thumb">
-                <img src="{{ asset('frontend') }}/images/project/002.png" alt="" class="img-fullwidth">
-                <div class="overlay-donate-now">
-                  <a href="page-donate.html" class="btn btn-dark btn-theme-colored btn-flat btn-sm pull-left mt-10">Donate <i class="flaticon-charity-make-a-donation font-16 ml-5"></i></a>
-                </div>
-              </div>
-              <div class="progress-item mt-0">
-                <div class="progress mb-0">
-                  <div data-percent="84" class="progress-bar"><span class="percent">0</span></div>
-                </div>
-              </div>
-              <div class="causes-details clearfix border-bottom-theme-color-1px p-15 pt-10 pb-10">
-                <h5 class="font-weight-600 font-16"><a href="page-single-cause.html">Donation for helpless child</a></h5>
-                <p>Lorem ipsum dolor sit amet, consect adipisicing elit. Praesent quos sit.</p>
-                <ul class="list-inline project-conditions mt-20 text-center bg-theme-colored-transparent-1 m-0 p-10">
-                  <li class="target-fund text-theme-colored"><strong>$120,000</strong>Target</li>
-                  <li class="day text-theme-colored"><i class="flaticon-charity-hand-holding-a-heart font-30"></i></li>
-                  <li class="raised text-theme-colored"><strong>$65,000</strong>Raised</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4 col-lg-4">
-            <div class="causes bg-white maxwidth500 mb-sm-30">
-              <div class="thumb">
-                <img src="{{ asset('frontend') }}/images/project/003.png" alt="" class="img-fullwidth">
-                <div class="overlay-donate-now">
-                  <a href="page-donate.html" class="btn btn-dark btn-theme-colored btn-flat btn-sm pull-left mt-10">Donate <i class="flaticon-charity-make-a-donation font-16 ml-5"></i></a>
-                </div>
-              </div>
-              <div class="progress-item mt-0">
-                <div class="progress mb-0">
-                  <div data-percent="84" class="progress-bar"><span class="percent">0</span></div>
-                </div>
-              </div>
-              <div class="causes-details clearfix border-bottom-theme-color-1px p-15 pt-10 pb-10">
-                <h5 class="font-weight-600 font-16"><a href="page-single-cause.html">Foor for Poor child</a></h5>
-                <p>Lorem ipsum dolor sit amet, consect adipisicing elit. Praesent quos sit.</p>
-                <ul class="list-inline project-conditions mt-20 text-center bg-theme-colored-transparent-1 m-0 p-10">
-                  <li class="target-fund text-theme-colored"><strong>$120,000</strong>Target</li>
-                  <li class="day text-theme-colored"><i class="flaticon-charity-hand-holding-a-heart font-30"></i></li>
-                  <li class="raised text-theme-colored"><strong>$65,000</strong>Raised</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+            @endforelse
+
+
         </div>
       </div>
     </section>

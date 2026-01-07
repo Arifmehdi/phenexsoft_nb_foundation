@@ -27,6 +27,7 @@ use App\Models\Doctor;
 use App\Models\FrontSlider;
 use App\Models\Hospital;
 use App\Models\User;
+use App\Models\Company;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -37,6 +38,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\OrderConfirmationEmail;
 use App\Models\Testimonial;
+use App\Models\Cause;
 
 class FrontendController extends Controller
 {
@@ -48,18 +50,18 @@ class FrontendController extends Controller
 
     public function index()
     {
-    // Get all active categories with their products
-    $data['categories'] = ProductCategory::where('active', true)
-        ->with(['products' => function($query) {
-            $query->where('active', true)
-                  ->select('products.id', 'products.name_en',  'products.slug', 'products.featured_image', 'products.price', 'products.discount_price') // Select only needed fields
-                  ->take(8); // Limit products per category
-        }])
-        ->whereHas('products', function($query) { // Only categories that have products
-            $query->where('active', true);
-        })
-        ->select('id', 'name_en', 'name_bn', 'slug') // Select category fields
-        ->get();
+        // Get all active categories with their products
+        $data['categories'] = ProductCategory::where('active', true)
+            ->with(['products' => function($query) {
+                $query->where('active', true)
+                    ->select('products.id', 'products.name_en',  'products.slug', 'products.featured_image', 'products.price', 'products.discount_price') // Select only needed fields
+                    ->take(8); // Limit products per category
+            }])
+            ->whereHas('products', function($query) { // Only categories that have products
+                $query->where('active', true);
+            })
+            ->select('id', 'name_en', 'name_bn', 'slug') // Select category fields
+            ->get();
 
         // dd($data['categories']);
 
@@ -80,7 +82,11 @@ class FrontendController extends Controller
             ->limit(12)
             ->get();
 
+        $data['volunteers'] = User::where('membership_type', 2)
+            ->get();
+
         $data['newses'] = BlogPost::whereActive(true)->limit(3)->get();
+        $data['causes_for_homepage'] = Cause::where('active', true)->latest()->limit(3)->get();
         $data['sliders'] = FrontSlider::whereActive(true)
             ->select('featured_image','title','description','link')
             ->get();
@@ -189,32 +195,43 @@ class FrontendController extends Controller
 
     public function about()
     {
-        return view('website.about' );  
+        $volunteers = User::where('membership_type', 2)->get();
+        return view('website.about' , compact('volunteers'));  
     }
 
     public function donate()
     {
-        return view('website.donate' );  
+        $causes = Cause::where('active', true)->latest()->get();
+        $testimonials = Testimonial::whereActive(true)
+            ->latest()
+            ->limit(5)
+            ->select('id','name','designation','image','text_en','designation')
+            ->get();
+        return view('website.donate' , compact('causes', 'testimonials'));  
     }
 
     public function campaign()
     {
-        return view('website.campaign' );  
+        $causes = Cause::where('active', true)->latest()->paginate(10);
+        return view('website.campaign', compact('causes'));
     }
 
     public function membership()
     {
-        return view('website.membership' );  
+        $memberships = User::where('membership_type',1)->get();
+        return view('website.membership' , compact('memberships'));  
     }
 
     public function cause()
     {
-        return view('website.cause' );  
+        $causes = Cause::where('active', true)->latest()->paginate(10);
+        return view('website.cause', compact('causes'));  
     }
 
-    public function cause_details()
+    public function cause_details($slug)
     {
-        return view('website.cause_details' );  
+        $cause = Cause::where('slug',$slug)->first();
+        return view('website.cause_details', compact('cause'));  
     }
 
     public function news()
@@ -369,7 +386,8 @@ class FrontendController extends Controller
 
     public function charity()
     {
-        return view('frontend.home.charity');
+        $causes = Cause::where('active', true)->latest()->paginate(10);
+        return view('frontend.home.charity', compact('causes'));
     }
    
 

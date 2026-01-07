@@ -4,10 +4,12 @@
 
 COLOR : Orange 
 COLOR CODE: #F26522
+COLOR CODE: #00BAA3
+COLOR CODE: #006A4E
 ----------------------------------------- */
 /* text-theme-color */
 .text-theme-colored {
-  color: #00BAA3 !important;
+  color: #006A4E !important;
 }
 /* text-hover-theme-color */
 .text-hover-theme-colored:hover {
@@ -64,7 +66,7 @@ COLOR CODE: #F26522
   background-color: rgba(242, 101, 34, 0.1);
 }
 .bg-theme-colored-transparent {
-  background-color: #00BAA3 !important;
+  background-color: #006A4E !important;
 }
 /* bg-hover-theme-color */
 .bg-hover-theme-colored:hover {
@@ -106,14 +108,14 @@ COLOR CODE: #F26522
   background-color: rgba(242, 101, 34, 0.7) !important;
 }
 .overlay-theme-colored-8:before {
-  background-color: #00BAA3 !important;
+  background-color: #006A4E !important;
 }
 .overlay-theme-colored-9:before {
   background-color: rgba(242, 101, 34, 0.9) !important;
 }
 /* border-theme-color */
 .border-theme-colored {
-  border-color: #00BAA3 !important;
+  border-color: #006A4E !important;
 }
 .border-theme-color-1px {
   border: 1px solid #F26522 !important;
@@ -263,7 +265,7 @@ COLOR CODE: #F26522
   background: #F26522;
 }
 .causes .progress-item .progress-bar .percent {
-  border-color: #00BAA3 !important;
+  border-color: #006A4E !important;
 }
 .team-member .member-info {
   background-color: rgba(242, 101, 34, 0.7) !important;
@@ -276,7 +278,7 @@ COLOR CODE: #F26522
 }
 /* Layer-overlay */
 .overlay-theme-colored:before {
-  background-color: #00BAA3 !important;
+  background-color: #006A4E !important;
 }
 /* Layeroverlay */
 .post .entry-meta.meta-absolute,
@@ -335,7 +337,7 @@ COLOR CODE: #F26522
 .line-bottom-center:before,
 .title-dots span,
 .home-countdown > li {
-  background: #00BAA3;
+  background: #006A4E;
 }
 .ui-state-highlight {
   background: #F26522 !important;
@@ -388,7 +390,7 @@ ul.list.theme-colored.check li:before,
 .donation-form .form-group label,
 .title-icon [class^="flaticon-"]::after,
 .title-icon [class^="flaticon-"]::before {
-  color: #00BAA3;
+  color: #006A4E;
 }
 .star-rating span::before {
   color: #F26522 !important;
@@ -397,7 +399,7 @@ ul.list.theme-colored.check li:before,
 .menuzord .menuzord-menu > li.active > a,
 .menuzord .menuzord-menu > li:hover > a,
 .menuzord .menuzord-menu ul.dropdown li:hover > a {
-  background: #00BAA3;
+  background: #006A4E;
   color: #fff;
 }
 .menuzord .menuzord-menu > li.active > a i,
@@ -418,11 +420,11 @@ ul.list.theme-colored.check li:before,
 .widget .line-bottom:after,
 .widget .line-bottom:after,
 .pager.theme-colored a {
-  border: 1px solid #00BAA3;
+  border: 1px solid #006A4E;
 }
 .border-theme-colored,
 .owl-theme .owl-dots .owl-dot span {
-  border-color: #00BAA3;
+  border-color: #006A4E;
 }
 .icon-box.box-style1.practice-style3:hover .icon-wrapper::after {
   border-color: #F26522 transparent transparent;
@@ -479,18 +481,18 @@ blockquote.gray.bg-theme-colored footer {
  * -----------------------------------------------
 */
 .btn-default.btn-theme-colored {
-  color: #00BAA3;
+  color: #006A4E;
   background-color: #fff;
-  border-color: #00BAA3;
+  border-color: #006A4E;
 }
 .btn-default.btn-theme-colored:focus,
 .btn-default.btn-theme-colored.focus {
-  color: #00BAA3;
+  color: #006A4E;
   background-color: #e6e6e6;
   border-color: #8c3308;
 }
 .btn-default.btn-theme-colored:hover {
-  color: #00BAA3;
+  color: #006A4E;
   background-color: #e6e6e6;
   border-color: #cb490c;
 }
@@ -616,7 +618,7 @@ fieldset[disabled] .btn-border.btn-theme-colored.focus {
 */
 .btn-dark.btn-theme-colored {
   color: #fff;
-  background-color: #00BAA3;
+  background-color: #006A4E;
   border-color: #21b9a8;
 }
 .btn-dark.btn-theme-colored:focus,
@@ -738,7 +740,7 @@ fieldset[disabled] .btn-gray.btn-theme-colored.focus {
 */
 .btn-theme-colored {
   color: #fff;
-  background-color: #00BAA3;
+  background-color: #006A4E;
   border-color: #24c4b1;
 }
 .btn-theme-colored:focus,
@@ -862,7 +864,7 @@ fieldset[disabled] .btn-theme-colored.focus {
  * -----------------------------------------------
 */
 .icon-theme-colored a {
-  color: #00BAA3;
+  color: #006A4E;
 }
 .icon-theme-colored.icon-bordered a {
   border-color: #F26522;
@@ -872,7 +874,7 @@ fieldset[disabled] .btn-theme-colored.focus {
   color: #fff;
 }
 .icon-theme-colored.icon-dark a {
-  background-color: #00BAA3;
+  background-color: #006A4E;
   color: #fff;
 }
 .icon-theme-colored.icon-dark a:hover {
@@ -920,7 +922,7 @@ fieldset[disabled] .btn-theme-colored.focus {
  * -----------------------------------------------
 */
 .icon-box.iconbox-theme-colored .icon {
-  color: #00BAA3;
+  color: #006A4E;
 }
 .icon-box.iconbox-theme-colored .icon.icon-border-effect::after {
   box-shadow: 0 0 0 3px #F26522;

@@ -43,14 +43,7 @@
         <div class="container">
           <nav id="menuzord-right" class="menuzord default no-bg">
             <a class="menuzord-brand pull-left flip" href="{{ route('home') }}">
-              @if (app()->environment('local'))
-                  <img src="{{ asset('frontend/images/logo-wide.png') }}" alt="Logo">
-              @else
-                  <img src="{{ route('imagecache', [
-                      'template' => 'original',
-                      'filename' => $ws->logo_alt()
-                  ]) }}" alt="Logo">
-              @endif
+                <img src="{{ route('imagecache', ['template' => 'original', 'filename' => $ws->logo_alt() ]) }}" alt="Logo">
             </a>
             <ul class="menuzord-menu">
               <li class="active"><a href="{{ route('home') }}">Home</a></li>

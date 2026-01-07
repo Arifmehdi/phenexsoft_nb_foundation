@@ -5,8 +5,8 @@
         <th wisth="100">Action</th>
         <th>Name</th>
         <th>Email</th>
+        <th>Member Type</th>
         <th>Temp Password</th>
-        <th>Doctor Id</th>
     </tr>
     </thead>
     <tbody class="">
@@ -35,9 +35,17 @@
             </td>
             <td>{{$user->name}}</td>
             <td>{{$user->email}}</td>
-            <td>{{ $user->password_temp }}</td>
-            <td><a href="{{route('categories.index',['id' =>$user->doctor->id ?? ''])}}">{{ Str::ucfirst( $user->doctor->id ?? '') }}</a></td>
+            <td>
+                @if($user->membership_type == 1)
+                    Membership
+                @elseif($user->membership_type == 2)
+                    Volunteer
+                @else
+                    User
+                @endif
+            </td>
 
+            <td>{{ $user->password_temp }}</td>
         </tr>
 
     @endforeach

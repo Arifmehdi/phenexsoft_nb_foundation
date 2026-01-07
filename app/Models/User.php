@@ -36,6 +36,14 @@ class User extends Authenticatable
         'ssc_registration',
         'blood_group',
         'image',
+        'short_bio',
+        'designation',
+        'membership_type',
+        'fb_url',
+        'twitter_url',
+        'insta_url',
+        'yt_url',
+        'local_url',
     ];
 
     /**

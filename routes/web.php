@@ -18,6 +18,8 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserRoleController;
 use App\Http\Controllers\Admin\WebsiteParameterController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
+use App\Http\Controllers\Admin\CompanyController;
+use App\Http\Controllers\Admin\CauseController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\WebsiteHomeController;
@@ -142,7 +144,7 @@ Route::get('/cause',[FrontendController::class,'cause'])->name('cause');
 Route::get('/donate',[FrontendController::class,'donate'])->name('donate');
 Route::get('/campaign',[FrontendController::class,'campaign'])->name('campaign');
 Route::get('/membership',[FrontendController::class,'membership'])->name('membership');
-Route::get('/cause/details',[FrontendController::class,'cause_details'])->name('cause.details');
+Route::get('/cause/details/{slug}',[FrontendController::class,'cause_details'])->name('cause.details');
 Route::get('/news',[FrontendController::class,'news'])->name('blog');
 Route::get('/news/details/{id}',[FrontendController::class,'news_details'])->name('news.details');
 Route::get('/shop',[FrontendController::class,'shop'])->name('shop');
@@ -621,7 +623,16 @@ Route::middleware(['userRole:admin','auth'])->prefix('admin')->group(function(){
     Route::resource('vehicle-assignments', \App\Http\Controllers\Admin\VehicleAssignmentController::class)->names('admin.vehicle_assignments');
 
     // membership 
-    Route::resource('members', MemberController::class);
+    // Route::resource('members', MemberController::class);
+
+    Route::prefix('admin')->as('admin.')->group(function () {
+        // Causes 
+        Route::resource('causes', CauseController::class);
+
+        // Companies 
+        Route::resource('companies', CompanyController::class);
+    });
+
 
 });
 

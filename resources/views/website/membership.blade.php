@@ -36,8 +36,29 @@
         <div class="section-content">
           <div class="row">
 
-
+            @forelse($memberships as $membership)
             <div class="col-sm-6 col-md-3 mb-30">
+              <div class="team box-hover-effect effect3 border-1px border-bottom-theme-color-2px sm-text-center maxwidth400 mb-sm-30">
+                <div class="thumb"><img class="img-fullwidth" src="{{ asset('storage/' . $membership->image) }}" alt=""></div>
+                <div class="content p-20 text-center">
+                  <h4 class="name mb-0 mt-0"><a class="text-theme-colored" href="#">{{ $membership->name }}</a></h4>
+                  <p>{{ $membership->designation }}</p>
+                  <p class="mb-20">{{ $membership->short_bio }}</p>
+                  <ul class="styled-icons icon-dark icon-theme-colored icon-sm">
+                    <li><a href="{{ $membership->fb_url }}" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="{{ $membership->twitter_url }}" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="{{ $membership->local_url }}" target="_blank"><i class="fa fa-dribbble"></i></a></li>
+                    <li><a href="{{ $membership->yt_url }}" target="_blank"><i class="fa fa-youtube"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            @empty 
+            <p>There is no membership </p>
+            @endforelse
+
+
+            {{--<div class="col-sm-6 col-md-3 mb-30">
               <div class="team box-hover-effect effect3 border-1px border-bottom-theme-color-2px sm-text-center maxwidth400 mb-sm-30">
                 <div class="thumb"><img class="img-fullwidth" src="{{ asset('frontend') }}/images/team/team1.jpg" alt=""></div>
                 <div class="content p-20 text-center">
@@ -71,22 +92,9 @@
                 </div>
               </div>
             </div>
-            <div class="col-sm-6 col-md-3 mb-30">
-              <div class="team box-hover-effect effect3 border-1px border-bottom-theme-color-2px sm-text-center maxwidth400 mb-sm-30">
-                <div class="thumb"><img class="img-fullwidth" src="{{ asset('frontend') }}/images/team/team1.jpg" alt=""></div>
-                <div class="content p-20 text-center">
-                  <h4 class="name mb-0 mt-0"><a class="text-theme-colored" href="#">Ismail Hasan</a></h4>
-                  <p>Student / Joined May'16</p>
-                  <p class="mb-20">Lorem ipsum dolor sit amet, con amit sectetur adipisicing</p>
-                  <ul class="styled-icons icon-dark icon-theme-colored icon-sm">
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                    <li><a href="#"><i class="fa fa-skype"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+
+
+
             <div class="col-sm-6 col-md-3 mb-30">
               <div class="team box-hover-effect effect3 border-1px border-bottom-theme-color-2px sm-text-center maxwidth400">
                 <div class="thumb"><img class="img-fullwidth" src="{{ asset('frontend') }}/images/team/team2.jpg" alt=""></div>
@@ -104,7 +112,7 @@
               </div>
             </div>
             
-            {{--<div class="col-sm-6 col-md-3 mb-30">
+            <div class="col-sm-6 col-md-3 mb-30">
               <div class="team box-hover-effect effect3 border-1px border-bottom-theme-color-2px sm-text-center maxwidth400 mb-sm-30">
                 <div class="thumb"><img class="img-fullwidth" src="{{ asset('frontend') }}/images/team/team1.jpg" alt=""></div>
                 <div class="content p-20 text-center">

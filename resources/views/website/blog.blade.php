@@ -25,11 +25,13 @@
           {{--@dd($blog)--}}
             <div class="col-md-6">
               <article class="post clearfix mb-30 bg-lighter">
-                <div class="entry-header">
-                  <div class="post-thumb thumb"> 
-                    <img src="{{ route('imagecache', ['template' => 'cpmd', 'filename' => $blog->fi()]) }}" alt="" class="img-responsive img-fullwidth"> 
+                <a href="{{ route('news.details', $blog->id) }}">
+                  <div class="entry-header">
+                    <div class="post-thumb thumb"> 
+                      <img src="{{ route('imagecache', ['template' => 'cpmd', 'filename' => $blog->fi()]) }}" alt="" class="img-responsive img-fullwidth"> 
+                    </div>
                   </div>
-                </div>
+                </a>
                 <div class="entry-content p-20 pr-10">
                   <div class="entry-meta media mt-0 no-bg no-border">
                     <div class="entry-date media-left text-center flip bg-theme-colored pt-5 pr-15 pb-5 pl-15">

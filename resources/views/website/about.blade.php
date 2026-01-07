@@ -1,271 +1,198 @@
 @extends('website.layouts.master')
 
-@section('title', 'About Us - '.env('APP_NAME'))
+@section('title', 'About Us - North Bengal Foundation')
 
 @section('meta')
-<meta name="description" content="Learn about Hubli’s mission to transform Bangladesh’s food supply chain and eliminate food wastage with a smart, efficient national network.">
-<meta name="keywords" content="Hubli, food hub, supply chain, food wastage, Bangladesh, agriculture">
-<meta property="og:title" content="About Us - Hubli">
-<meta property="og:description" content="Transforming Bangladesh’s food supply chain with smart logistics and technology.">
+<meta name="description" content="Learn about North Bengal Foundation, a non-profit organization working for education, healthcare, disaster relief, and social welfare in Bangladesh.">
+<meta name="keywords" content="North Bengal Foundation, charity, NGO Bangladesh, education support, healthcare, disaster relief">
+<meta property="og:title" content="About Us - North Bengal Foundation">
+<meta property="og:description" content="Building a just, inclusive, and resilient society through humanitarian work across Bangladesh.">
 <meta property="og:image" content="{{ asset('frontend/assets/img/northbengal/contact_banner.png') }}">
 <meta property="og:type" content="website">
 @endsection
 
 @push('styles')
-
 @endpush
 
 @section('content')
-  <div class="main-content">
+<div class="main-content">
 
-    <!-- Section: inner-header -->
-    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="{{ asset('frontend') }}/images/bg/bg1.jpg">
-      <div class="container pt-100 pb-50">
-        <!-- Section Content -->
-        <div class="section-content pt-100">
-          <div class="row"> 
-            <div class="col-md-12">
-              <h3 class="title text-white">About</h3>
-            </div>
+  <!-- Section: inner-header -->
+  <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="{{ asset('frontend') }}/images/bg/bg1.jpg">
+    <div class="container pt-100 pb-50">
+      <div class="section-content pt-100">
+        <div class="row">
+          <div class="col-md-12">
+            <h3 class="title text-white">About North Bengal Foundation</h3>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Section: About -->
-    <section class="bg-silver-light">
-      <div class="container">
-        <div class="section-content">
-          <div class="row">
-            <div class="col-md-6">
-              <h2 class="text-uppercase font-weight-600 mt-0 font-28 line-bottom">Rise your Helping Hand please save the children.</h2>
-              <h4 class="text-theme-colored">Lorem ipsum dolor sit amet soluta saepe odit error, maxime praesentium sunt udiandae!</h4>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore atque officiis maxime suscipit expedita obcaecati nulla in ducimus iure quos quam recusandae dolor quas et perspiciatis voluptatum accusantium delectus nisi reprehenderit, eveniet fuga modi pariatur, eius vero. Ea vitae maiores.</p>
-              <a class="btn btn-theme-colored btn-flat btn-lg mt-10 mb-sm-30" href="#">Read More →</a>
-            </div>
-            <div class="col-md-6">
-              <div class="owl-carousel-1col" data-nav="true">
-                <div class="item">
-                  <img src="{{ asset('frontend') }}/images/about/002.png" alt="">
-                </div>
-                <div class="item">
-                  <img src="{{ asset('frontend') }}/images/about/001.png" alt="">
-                </div>
-                <div class="item">
-                  <img src="{{ asset('frontend') }}/images/about/002.png" alt="">
-                </div>
+  <!-- Section: About -->
+  <section class="bg-silver-light">
+    <div class="container">
+      <div class="section-content">
+        <div class="row">
+          <div class="col-md-6">
+            <h2 class="text-uppercase font-weight-600 mt-0 font-28 line-bottom">
+              Serving Humanity with Commitment
+            </h2>
+
+            <h4 class="text-theme-colored">
+              A non-profit organization dedicated to social development and humanitarian support in Bangladesh.
+            </h4>
+
+            <p>
+              North Bengal Foundation is a charitable organization working to improve the lives of underprivileged communities across Bangladesh. Our work focuses on long-term impact through education support, healthcare assistance, disaster response, and social welfare programs. We believe in community-based solutions that create sustainable and meaningful change.
+            </p>
+
+            <p>
+              The organization is governed by an experienced management committee, registered under the applicable laws of Bangladesh, and operates with full transparency, accountability, and ethical standards.
+            </p>
+
+            <a class="btn btn-theme-colored btn-flat btn-lg mt-10 mb-sm-30" href="#">Read More →</a>
+          </div>
+
+          <div class="col-md-6">
+            <div class="owl-carousel-1col" data-nav="true">
+              <div class="item">
+                <img src="{{ asset('frontend') }}/images/about/002.png" alt="">
+              </div>
+              <div class="item">
+                <img src="{{ asset('frontend') }}/images/about/001.png" alt="">
+              </div>
+              <div class="item">
+                <img src="{{ asset('frontend') }}/images/about/002.png" alt="">
               </div>
             </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: About Info -->
+  <section id="about">
+    <div class="container">
+      <div class="section-content">
+        <div class="row">
+
+          <!-- Events -->
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <h3 class="line-bottom border-bottom mt-0">Our Activities</h3>
+            <p>
+              We regularly organize humanitarian programs including education support, medical camps, relief distribution, and community development initiatives across North Bengal and other regions of Bangladesh.
+            </p>
+          </div>
+
+          <!-- Mission -->
+          <div class="col-xs-12 col-md-4">
+            <h3 class="line-bottom border-bottom mt-0 mt-sm-20">Our Mission</h3>
+            <img src="{{ asset('frontend') }}/images/about/a1.jpg" class="img-fullwidth" alt="">
+            <p class="mt-15">
+              Our mission is to deliver effective and transparent social programs that address critical needs in education, health, disaster relief, and social welfare. We work with integrity, accountability, and compassion to ensure every contribution creates real impact.
+            </p>
+          </div>
+
+          <!-- Get Involved -->
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <h3 class="text-uppercase line-bottom mt-sm-30 mt-0">
+              Get <span class="text-theme-colored">Involved</span>
+            </h3>
+
+            <div class="icon-box icon-box-effect mb-20 p-15 bg-light border-bottom-theme-color-3px">
+              <a href="#" class="icon mb-0 mr-0 pull-left flip">
+                <i class="flaticon-charity-responsible-energy-use text-theme-colored font-48"></i>
+              </a>
+              <div class="ml-80">
+                <h5 class="icon-box-title mt-15 mb-5"><strong>Become a Donor</strong></h5>
+                <p class="text-gray">
+                  Support our mission by contributing to education, healthcare, and emergency relief programs.
+                </p>
+              </div>
+            </div>
+
+            <div class="icon-box icon-box-effect mb-20 p-15 bg-light border-bottom-theme-color-3px">
+              <a href="#" class="icon mb-0 mr-0 pull-left flip">
+                <i class="flaticon-charity-shelter text-theme-colored font-48"></i>
+              </a>
+              <div class="ml-80">
+                <h5 class="icon-box-title mt-15 mb-5"><strong>Become a Volunteer</strong></h5>
+                <p class="text-gray">
+                  Join us as a volunteer and be part of meaningful change in the lives of others.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      <!-- divider: Emergency Services -->
+    <x-emergency-service title="How You Can Support Our Mission" />
+
+  <!-- Volunteers -->
+  <section class="bg-lighter">
+    <div class="container">
+      <div class="section-title text-center">
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+            <h2 class="text-uppercase line-bottom-center mt-0">
+              Our <span class="text-theme-colored font-weight-600">Volunteers</span>
+            </h2>
+            <div class="title-icon">
+              <i class="flaticon-charity-hand-holding-a-heart"></i>
+            </div>
+            <p>
+              Our volunteers are the heart of North Bengal Foundation. <br>
+              They dedicate their time, skills, and energy to serve humanity and build a better society.
+            </p>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- Section: About  -->
-    <section id="about">
-      <div class="container">
-        <div class="section-content">
-          <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-4">
-              <h3 class="line-bottom border-bottom mt-0">Upcoming Events</h3>
-              <div class="event media sm-maxwidth400 border-bottom mt-5 mb-0 pt-10 pb-15">
-                <div class="row">
-                  <div class="col-xs-2 col-md-3 pr-0">
-                    <div class="event-date text-center bg-theme-colored border-1px p-0 pt-10 pb-10 sm-custom-style">
-                      <ul>
-                        <li class="font-28 text-white font-weight-700">28</li>
-                        <li class="font-18 text-white text-center text-uppercase">Feb</li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="col-xs-9 pr-10 pl-10">
-                    <div class="event-content mt-10 p-5 pb-0 pt-0">
-                      <h5 class="media-heading font-16 font-weight-600"><a href="#">Event: Help The Children</a></h5>
-                      <ul class="list-inline font-weight-600 text-gray-dimgray">
-                        <li><i class="fa fa-clock-o text-theme-colored"></i> 5.00 pm - 7.30 pm</li>
-                        <li> <i class="fa fa-map-marker text-theme-colored"></i> 25 Newyork City.</li>
-                      </ul>
+      <div class="section-content">
+        <div class="row">
+
+          @forelse($volunteers as $volunteer)
+            <div class="col-xs-12 col-sm-6 col-md-4 mb-30">
+              <div class="team-member clearfix">
+                <div class="team-thumb">
+                  <img alt="" src="{{ asset('storage/' . $volunteer->image) }}" class="img-fullwidth">
+                  <div class="overlay">
+                    <div class="content">
+                      <p>{{ $volunteer->short_bio }}</p>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="event media sm-maxwidth400 border-bottom mt-5 mb-0 pt-10 pb-15">
-                <div class="row">
-                  <div class="col-xs-2 col-md-3 pr-0">
-                    <div class="event-date text-center bg-theme-colored border-1px p-0 pt-10 pb-10 sm-custom-style">
-                      <ul>
-                        <li class="font-28 text-white font-weight-700">26</li>
-                        <li class="font-18 text-white text-center text-uppercase">OCT</li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="col-xs-9 pr-10 pl-10">
-                    <div class="event-content mt-10 p-5 pb-0 pt-0">
-                      <h5 class="media-heading font-16 font-weight-600"><a href="#">Event: Foods For Poor</a></h5>
-                      <ul class="list-inline font-weight-600 text-gray-dimgray">
-                        <li><i class="fa fa-clock-o text-theme-colored"></i> 6.00 pm - 8.30 pm</li>
-                        <li> <i class="fa fa-map-marker text-theme-colored"></i> 25 Newyork City.</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="event media sm-maxwidth400 mt-5 mb-0 pt-10 pb-15">
-                <div class="row">
-                  <div class="col-xs-2 col-md-3 pr-0">
-                    <div class="event-date text-center bg-theme-colored border-1px p-0 pt-10 pb-10 sm-custom-style">
-                      <ul>
-                        <li class="font-28 text-white font-weight-700">12</li>
-                        <li class="font-18 text-white text-center text-uppercase">DEC</li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="col-xs-9 pr-10 pl-10">
-                    <div class="event-content mt-10 p-5 pb-0 pt-0">
-                      <h5 class="media-heading font-16 font-weight-600"><a href="#">Event: Save The Water</a></h5>
-                      <ul class="list-inline font-weight-600 text-gray-dimgray">
-                        <li><i class="fa fa-clock-o text-theme-colored"></i> 4.00 pm - 6.00 pm</li>
-                        <li> <i class="fa fa-map-marker text-theme-colored"></i> 25 Newyork City.</li>
-                      </ul>
-                    </div>
-                  </div>
+                <div class="team-info bg-theme-colored">
+                  <h3 class="mt-0 text-white">{{ $volunteer->name }}</h3>
+                  <ul class="styled-icons icon-circled icon-theme-colored">
+                    <li><a href="{{ $volunteer->fb_url }}" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="{{ $volunteer->twitter_url }}" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="{{ $volunteer->local_url }}" target="_blank"><i class="fa fa-dribbble"></i></a></li>
+                  </ul>
                 </div>
               </div>
             </div>
-            <div class="col-xs-12 col-md-4">
-              <h3 class="line-bottom border-bottom mt-0 mt-sm-20">Our Mission</h3>
-              <img src="{{ asset('frontend') }}/images/about/a1.jpg" class="img-fullwidth" alt="">
-              <p class="mt-15">Lorem ipsum dolor sit amet, conse ctetur adipis elit. Totam perferendis, assumenda vitae cum beatae Pariatur, ratione adipis elit. Totam perfereding.</p>
-              <a href="#" class="btn btn-colored btn-sm btn-theme-colored">read more</a>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4">
-              <h3 class="text-uppercase line-bottom mt-sm-30 mt-0">Get <span class="text-theme-colored"> Involved</span></h3>
-              <div class="icon-box icon-box-effect mb-20 p-15 bg-light border-bottom-theme-color-3px">
-                <a href="#" class="icon mb-0 mr-0 pull-left flip">
-                  <i class="flaticon-charity-responsible-energy-use text-theme-colored font-48"></i>
-                </a>
-                <div class="ml-80">
-                  <h5 class="icon-box-title mt-15 mb-5"><strong>Become a Donar</strong></h5>
-                  <p class="text-gray">Lorem ipsum dolor sit ametcon elit sectetu radipisicing. Mollitia quasi.<a class="font-14 pl-10 text-theme-colored" href="page-about1.html"> read more...</a></p>
-                </div>
-              </div>
-              <div class="icon-box icon-box-effect mb-20 p-15 bg-light border-bottom-theme-color-3px">
-                <a href="#" class="icon mb-0 mr-0 pull-left flip">
-                  <i class="flaticon-charity-shelter text-theme-colored font-48"></i>
-                </a>
-                <div class="ml-80">
-                  <h5 class="icon-box-title mt-15 mb-5"><strong>Become a Volunteer</strong></h5>
-                  <p class="text-gray">Lorem ipsum dolor sit ametcon elit sectetu radipisicing. Mollitia quasi.<a class="font-14 pl-10 text-theme-colored" href="page-about1.html"> read more...</a></p>
-                </div>
-              </div>
-            </div>
-          </div>
+            @empty 
+            <p>Here is no volunteer</p>
+            @endforelse 
+
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- divider: Emergency Services -->
-    <section class="divider parallax layer-overlay overlay-dark-9" data-stellar-background-ratio="0.2"  data-bg-img="{{ asset('frontend') }}/images/bg/bg2.jpg">
-      <div class="container">
-        <div class="section-content text-center">
-          <div class="row">
-            <div class="col-md-12">
-              <h3 class="mt-0 text-white">How you can help us</h3>
-              <h2 class="text-white">Just call at <span class="text-theme-colored">(01) 234 5678</span> to make a donation</h2>
-            </div>
-          </div>
-        </div>
-      </div>      
-    </section>
-    
-    <!-- Section: volunteers -->
-    <section class="bg-lighter">
-      <div class="container">
-        <div class="section-title text-center">
-          <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-              <h2 class="text-uppercase line-bottom-center mt-0">Our <span class="text-theme-colored font-weight-600">volunteers</span></h2>
-              <div class="title-icon">
-                <i class="flaticon-charity-hand-holding-a-heart"></i>
-              </div>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem autem voluptatem obcaecati! <br>ipsum dolor sit Rem autem voluptatem obcaecati</p>
-            </div>
-          </div>
-        </div>
-        <div class="section-content">
-          <div class="row">
-            <div class="col-sm-6 col-md-3">
-              <div class="team box-hover-effect effect3 border-1px border-bottom-theme-color-2px sm-text-center maxwidth400 mb-sm-30">
-                <div class="thumb"><img class="img-fullwidth" src="{{ asset('frontend') }}/images/team/team1.jpg" alt=""></div>
-                <div class="content bg-white p-20 text-center">
-                  <h4 class="name mb-0 mt-0"><a class="text-theme-colored" href="#">Sakib Mahtab</a></h4>
-                  <p>Student / Joined May'16</p>
-                  <p class="mb-20">Lorem ipsum dolor sit amet, con amit sectetur adipisicing</p>
-                  <ul class="styled-icons icon-dark icon-theme-colored icon-sm">
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                    <li><a href="#"><i class="fa fa-skype"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>  
-            <div class="col-sm-6 col-md-3">
-              <div class="team box-hover-effect effect3 border-1px border-bottom-theme-color-2px sm-text-center maxwidth400 mb-sm-30">
-                <div class="thumb"><img class="img-fullwidth" src="{{ asset('frontend') }}/images/team/team2.jpg" alt=""></div>
-                <div class="content bg-white p-20 text-center">
-                  <h4 class="name mb-0 mt-0"><a class="text-theme-colored" href="#">Zobaier Hosen</a></h4>
-                  <p>Student / Joined May'16</p>
-                  <p class="mb-20">Lorem ipsum dolor sit amet, con amit sectetur adipisicing</p>
-                  <ul class="styled-icons icon-dark icon-theme-colored icon-sm">
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                    <li><a href="#"><i class="fa fa-skype"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-              <div class="team box-hover-effect effect3 border-1px border-bottom-theme-color-2px sm-text-center maxwidth400 mb-sm-30">
-                <div class="thumb"><img class="img-fullwidth" src="{{ asset('frontend') }}/images/team/team1.jpg" alt=""></div>
-                <div class="content bg-white p-20 text-center">
-                  <h4 class="name mb-0 mt-0"><a class="text-theme-colored" href="#">Ismail Hasan</a></h4>
-                  <p>Student / Joined May'16</p>
-                  <p class="mb-20">Lorem ipsum dolor sit amet, con amit sectetur adipisicing</p>
-                  <ul class="styled-icons icon-dark icon-theme-colored icon-sm">
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                    <li><a href="#"><i class="fa fa-skype"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-3">
-              <div class="team box-hover-effect effect3 border-1px border-bottom-theme-color-2px sm-text-center maxwidth400">
-                <div class="thumb"><img class="img-fullwidth" src="{{ asset('frontend') }}/images/team/team2.jpg" alt=""></div>
-                <div class="content bg-white p-20 text-center">
-                  <h4 class="name mb-0 mt-0"><a class="text-theme-colored" href="#">Jerin Srimoti</a></h4>
-                  <p>Student / Joined May'16</p>
-                  <p class="mb-20">Lorem ipsum dolor sit amet, con amit sectetur adipisicing</p>
-                  <ul class="styled-icons icon-dark icon-theme-colored icon-sm">
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                    <li><a href="#"><i class="fa fa-skype"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>             
-          </div>
-        </div>
-      </div>   
-    </section>
-  </div>
-
+</div>
 @endsection
 
-@push('scripts')
-
+@push('js')
 @endpush

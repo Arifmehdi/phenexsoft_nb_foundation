@@ -13,11 +13,11 @@
 <title>@yield('title')</title>
 
 <!-- Favicon and Touch Icons -->
-<link href="{{ asset('frontend') }}/images/favicon.png" rel="shortcut icon" type="image/png">
-<link href="images/apple-touch-icon.png" rel="apple-touch-icon">
-<link href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
-<link href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
-<link href="images/apple-touch-icon-144x144.png" rel="apple-touch-icon" sizes="144x144">
+<link href="{{ route('imagecache', ['template' => 'original', 'filename' => $ws->favicon()]) }}" rel="shortcut icon" type="image/png">
+<link href="{{ route('imagecache', ['template' => 'original', 'filename' => $ws->favicon()]) }}" rel="apple-touch-icon">
+<link href="{{ route('imagecache', ['template' => 'original', 'filename' => $ws->favicon()]) }}" rel="apple-touch-icon" sizes="72x72">
+<link href="{{ route('imagecache', ['template' => 'original', 'filename' => $ws->favicon()]) }}" rel="apple-touch-icon" sizes="114x114">
+<link href="{{ route('imagecache', ['template' => 'original', 'filename' => $ws->favicon()]) }}" rel="apple-touch-icon" sizes="144x144">
 
 <!-- Stylesheet -->
 <link href="{{ asset('frontend') }}/css/bootstrap.min.css" rel="stylesheet" type="text/css">

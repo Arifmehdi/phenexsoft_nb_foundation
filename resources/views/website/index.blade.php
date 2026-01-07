@@ -208,7 +208,7 @@
                   data-splitin="none" 
                   data-splitout="none" 
                   data-responsive_offset="on"
-                  style="z-index: 5; white-space: nowrap; letter-spacing:1px;"><a class="btn btn-default btn-circled btn-transparent pl-20 pr-20" href="#">Donate Now</a> 
+                  style="z-index: 5; white-space: nowrap; letter-spacing:1px;"><a class="btn btn-default btn-circled btn-transparent pl-20 pr-20" href="{{ route('donate') }}">Donate Now</a> 
                 </div>
               </li>
 
@@ -489,8 +489,9 @@
             </div>
             <div class="col-md-6">
               <div class="about-details">
-                <h2 class="font-36 mt-0"> Welcome to <span class="text-theme-colored">FundPro</span> Please Rise your Helping Hand</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, odioserunt provident maiores consectetur adipisicing elit. Aliquam odio dese runtesseu provident maiores libero porro dolorem est. Velit necessitatibus fugiat error incidunt excepturi doloribus officia aspernatur quod libero  Velit necessitatibus fugiat error incidunt excepturi doloribus officia</p>
+                <h2 class="font-36 mt-0"><span class="text-theme-colored">North Bangla Foundation</span>   </h2>
+                <h3>Together We Build a Better Tomorrow</h3>
+                <p>We are passionately committed to uplifting underprivileged communities across Northern Bangladesh by providing access to quality education, essential healthcare services, and comprehensive humanitarian assistance. Through our programs, we aim to empower children, women, and families, alleviate poverty, and create sustainable opportunities that transform lives and build stronger, healthier, and more resilient communities. </p>
                 <div class="singnature mt-20">
                   <img src="{{ asset('frontend') }}/images/signature.png" alt="img1">
                 </div>
@@ -512,117 +513,51 @@
               <div class="title-icon">
                 <i class="flaticon-charity-hand-holding-a-heart"></i>
               </div>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem autem voluptatem obcaecati! <br>ipsum dolor sit Rem autem voluptatem obcaecati</p>
+              <p>We work to support those in need by providing education, healthcare, and essential aid to <br>improve lives and build stronger communities.</p>
             </div>
           </div>
         </div>
         <div class="row multi-row-clearfix">
           <div class="owl-carousel-3col">
+            @forelse($causes_for_homepage as $cause)
             <div class="item">
               <div class="causes bg-white maxwidth500 mb-30">
-                <div class="thumb">
-                  <img src="{{ asset('frontend') }}/images/project/001.png" alt="" class="img-fullwidth">
-                </div>
+                <a href="{{ route('cause.details', $cause->slug) }}">
+                  <div class="thumb">
+                    @if($cause->image)
+                      <img src="{{ asset('storage/' . $cause->image) }}" alt="{{ $cause->title }}" class="img-fullwidth">
+                    @else
+                      <img src="{{ asset('frontend') }}/images/project/no-image.png" alt="No Image" class="img-fullwidth">
+                    @endif
+                  </div>
+                </a>
                 <div class="causes-details clearfix border-bottom p-15 pt-15 pb-15">
                 <ul class="list-inline font-20 font-weight-600 clearfix mb-5">
-                  <li class="pull-left font-weight-400 text-black-333 pr-0">Raised: <span class="text-theme-colored font-weight-700">$2860</span></li>
-                  <li class="pull-right font-weight-400 text-black-333 pr-0">Goal: <span class="text-theme-colored font-weight-700">$5000</span></li>
+                  <li class="pull-left font-weight-400 text-black-333 pr-0">Raised: <span class="text-theme-colored font-weight-700">${{ number_format($cause->raised_amount, 2) }}</span></li>
+                  <li class="pull-right font-weight-400 text-black-333 pr-0">Goal: <span class="text-theme-colored font-weight-700">${{ number_format($cause->goal_amount, 2) }}</span></li>
                 </ul>
-                <h4 class="text-uppercase"><a href="page-single-cause.html">Education for Childreen</a></h4>
+                @php
+                    $progress = ($cause->goal_amount > 0) ? round(($cause->raised_amount / $cause->goal_amount) * 100) : 0;
+                @endphp
+                <h4 class="text-uppercase"><a href="{{ route('cause.details', $cause->slug) }}">{{ $cause->title }}</a></h4>
                   <div class="progress-item mt-0">
                     <div class="progress mb-0">
-                      <div data-percent="84" class="progress-bar"><span class="percent">0</span></div>
+                      <div data-percent="{{ $progress }}" class="progress-bar"><span class="percent">{{ $progress }}%</span></div>
                     </div>
                   </div>
-                <p class="mt-20">Lorem ipsum dolor sit amet, consect adipisicing elit. Praesent quos sit.Lorem ipsum dolor sit amet, consect adipisicing elit. Praesent quos sit.</p>
-                <a href="page-donate.html" class="btn btn-default btn-theme-colored btn-xs font-16 mt-10"><i class="flaticon-charity-make-a-donation font-16 ml-5"></i> Donate <i class="flaticon-charity-make-a-donation font-16 ml-5"></i></a>
+                  <p class="mt-20">
+                      {{ \Illuminate\Support\Str::limit(strip_tags($cause->short_description), 150, '...') }}
+                  </p>
+
+                <a href="{{ asset('donate') }}" class="btn btn-default btn-theme-colored btn-xs font-16 mt-10"><i class="flaticon-charity-make-a-donation font-16 ml-5"></i> Donate <i class="flaticon-charity-make-a-donation font-16 ml-5"></i></a>
                 </div>
               </div>
             </div>
+            @empty
             <div class="item">
-              <div class="causes bg-white maxwidth500 mb-30">
-                <div class="thumb">
-                  <img src="{{ asset('frontend') }}/images/project/002.png" alt="" class="img-fullwidth">
-                </div>
-                <div class="causes-details clearfix border-bottom p-15 pt-15 pb-15">
-                <ul class="list-inline font-20 font-weight-600 clearfix mb-5">
-                  <li class="pull-left font-weight-400 text-black-333 pr-0">Raised: <span class="text-theme-colored font-weight-700">$2860</span></li>
-                  <li class="pull-right font-weight-400 text-black-333 pr-0">Goal: <span class="text-theme-colored font-weight-700">$5000</span></li>
-                </ul>
-                <h4 class="text-uppercase"><a href="page-single-cause.html">Sponsor a child today</a></h4>
-                  <div class="progress-item mt-0">
-                    <div class="progress mb-0">
-                      <div data-percent="84" class="progress-bar"><span class="percent">0</span></div>
-                    </div>
-                  </div>
-                <p class="mt-20">Lorem ipsum dolor sit amet, consect adipisicing elit. Praesent quos sit.Lorem ipsum dolor sit amet, consect adipisicing elit. Praesent quos sit.</p>
-                <a href="page-donate.html" class="btn btn-default btn-theme-colored btn-xs font-16 mt-10"><i class="flaticon-charity-make-a-donation font-16 ml-5"></i> Donate <i class="flaticon-charity-make-a-donation font-16 ml-5"></i></a>
-                </div>
-              </div>
+                <p>No active causes found.</p>
             </div>
-            <div class="item">
-              <div class="causes bg-white maxwidth500 mb-30">
-                <div class="thumb">
-                  <img src="{{ asset('frontend') }}/images/project/003.png" alt="" class="img-fullwidth">
-                </div>
-                <div class="causes-details clearfix border-bottom p-15 pt-15 pb-15">
-                <ul class="list-inline font-20 font-weight-600 clearfix mb-5">
-                  <li class="pull-left font-weight-400 text-black-333 pr-0">Raised: <span class="text-theme-colored font-weight-700">$2860</span></li>
-                  <li class="pull-right font-weight-400 text-black-333 pr-0">Goal: <span class="text-theme-colored font-weight-700">$5000</span></li>
-                </ul>
-                <h4 class="text-uppercase"><a href="page-single-cause.html">Shelter for Poor Child</a></h4>
-                  <div class="progress-item mt-0">
-                    <div class="progress mb-0">
-                      <div data-percent="84" class="progress-bar"><span class="percent">0</span></div>
-                    </div>
-                  </div>
-                <p class="mt-20">Lorem ipsum dolor sit amet, consect adipisicing elit. Praesent quos sit.Lorem ipsum dolor sit amet, consect adipisicing elit. Praesent quos sit.</p>
-                <a href="page-donate.html" class="btn btn-default btn-theme-colored btn-xs font-16 mt-10"><i class="flaticon-charity-make-a-donation font-16 ml-5"></i> Donate <i class="flaticon-charity-make-a-donation font-16 ml-5"></i></a>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="causes bg-white maxwidth500 mb-30">
-                <div class="thumb">
-                  <img src="{{ asset('frontend') }}/images/project/004.jpg" alt="" class="img-fullwidth">
-                </div>
-                <div class="causes-details clearfix border-bottom p-15 pt-15 pb-15">
-                <ul class="list-inline font-20 font-weight-600 clearfix mb-5">
-                  <li class="pull-left font-weight-400 text-black-333 pr-0">Raised: <span class="text-theme-colored font-weight-700">$2860</span></li>
-                  <li class="pull-right font-weight-400 text-black-333 pr-0">Goal: <span class="text-theme-colored font-weight-700">$5000</span></li>
-                </ul>
-                <h4 class="text-uppercase"><a href="page-single-cause.html">Happiness for orphan child</a></h4>
-                  <div class="progress-item mt-0">
-                    <div class="progress mb-0">
-                      <div data-percent="84" class="progress-bar"><span class="percent">0</span></div>
-                    </div>
-                  </div>
-                <p class="mt-20">Lorem ipsum dolor sit amet, consect adipisicing elit. Praesent quos sit.Lorem ipsum dolor sit amet, consect adipisicing elit. Praesent quos sit.</p>
-                <a href="page-donate.html" class="btn btn-default btn-theme-colored btn-xs font-16 mt-10"><i class="flaticon-charity-make-a-donation font-16 ml-5"></i> Donate <i class="flaticon-charity-make-a-donation font-16 ml-5"></i></a>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="causes bg-white maxwidth500 mb-30">
-                <div class="thumb">
-                  <img src="{{ asset('frontend') }}/images/project/001.png" alt="" class="img-fullwidth">
-                </div>
-                <div class="causes-details clearfix border-bottom p-15 pt-15 pb-15">
-                <ul class="list-inline font-20 font-weight-600 clearfix mb-5">
-                  <li class="pull-left font-weight-400 text-black-333 pr-0">Raised: <span class="text-theme-colored font-weight-700">$2860</span></li>
-                  <li class="pull-right font-weight-400 text-black-333 pr-0">Goal: <span class="text-theme-colored font-weight-700">$5000</span></li>
-                </ul>
-                <h4 class="text-uppercase"><a href="page-single-cause.html">Donation for helpless child</a></h4>
-                  <div class="progress-item mt-0">
-                    <div class="progress mb-0">
-                      <div data-percent="84" class="progress-bar"><span class="percent">0</span></div>
-                    </div>
-                  </div>
-                <p class="mt-20">Lorem ipsum dolor sit amet, consect adipisicing elit. Praesent quos sit.Lorem ipsum dolor sit amet, consect adipisicing elit. Praesent quos sit.</p>
-                <a href="page-donate.html" class="btn btn-default btn-theme-colored btn-xs font-16 mt-10"><i class="flaticon-charity-make-a-donation font-16 ml-5"></i> Donate <i class="flaticon-charity-make-a-donation font-16 ml-5"></i></a>
-                </div>
-              </div>
-            </div>
+            @endforelse
           </div>
         </div>
       </div>
@@ -676,7 +611,7 @@
                   <div class="icon-box left media bg-silver-light border-1px border-theme-colored p-15 mb-20"> <a class="media-left pull-left flip" href="#"><i class="flaticon-charity-shaking-hands-inside-a-heart text-theme-colored"></i></a>
                     <div class="media-body">
                       <h4 class="font-15 text-uppercase">Save The children</h4>
-                      <p>Lorem ipsum dolor sit ametcons ecte adipisicing eli cumconse teturs lorem ipsum dolor is emmit</p>
+                      <p>We work to protect underprivileged children by supporting their education, health, and basic needs so they can grow.</p>
                     </div>
                   </div>
                 </div>
@@ -684,7 +619,7 @@
                   <div class="icon-box left media bg-silver-light border-1px border-theme-colored p-15 mb-20"> <a class="media-left pull-left flip" href="#"><i class="flaticon-charity-shelter text-theme-colored"></i></a>
                     <div class="media-body">
                       <h4 class="font-15 text-uppercase">Help The Helpless</h4>
-                      <p>Lorem ipsum dolor sit ametcons ecte adipisicing eli cumconse teturs lorem ipsum dolor is emmit</p>
+                      <p>We stand beside the poorest and most vulnerable people by providing food, clothing, medical support, and essential assistance in times of need.</p>
                     </div>
                   </div>
                 </div>
@@ -692,7 +627,7 @@
                   <div class="icon-box left media bg-silver-light border-1px border-theme-colored p-15 mb-20"> <a class="media-left pull-left flip" href="#"><i class="flaticon-charity-responsible-use-of-water text-theme-colored"></i></a>
                     <div class="media-body">
                       <h4 class="font-15 text-uppercase">Pure Water For Poor</h4>
-                      <p>Lorem ipsum dolor sit ametcons ecte adipisicing eli cumconse teturs lorem ipsum dolor is emmit</p>
+                      <p>We help provide access to clean and safe drinking water in underserved communities to prevent disease and improve overall health.</p>
                     </div>
                   </div>
                 </div>
@@ -700,7 +635,7 @@
                   <div class="icon-box left media bg-silver-light border-1px border-theme-colored p-15 mb-20"> <a class="media-left pull-left flip" href="#"><i class="flaticon-charity-make-a-donation text-theme-colored"></i></a>
                     <div class="media-body">
                       <h4 class="font-15 text-uppercase">Donation for poor</h4>
-                      <p>Lorem ipsum dolor sit ametcons ecte adipisicing eli cumconse teturs lorem ipsum dolor is emmit</p>
+                      <p>Your donation helps us support struggling families with food, medicine, education, and emergency relief, bringing hope and dignity to their lives.</p>
                     </div>
                   </div>
                 </div>
@@ -723,7 +658,7 @@
                       <h5 class="media-heading font-16 font-weight-600"><a href="#">Event: Help The Children</a></h5>
                       <ul class="list-inline font-weight-600 text-gray-dimgray">
                         <li><i class="fa fa-clock-o text-theme-colored"></i> 5.00 pm - 7.30 pm</li>
-                        <li> <i class="fa fa-map-marker text-theme-colored"></i> 25 Newyork City.</li>
+                        <li> <i class="fa fa-map-marker text-theme-colored"></i> 25 Dhaka, Bangladesh.</li>
                       </ul>
                     </div>
                   </div>
@@ -744,7 +679,7 @@
                       <h5 class="media-heading font-16 font-weight-600"><a href="#">Event: Foods For Poor</a></h5>
                       <ul class="list-inline font-weight-600 text-gray-dimgray">
                         <li><i class="fa fa-clock-o text-theme-colored"></i> 6.00 pm - 8.30 pm</li>
-                        <li> <i class="fa fa-map-marker text-theme-colored"></i> 25 Newyork City.</li>
+                        <li> <i class="fa fa-map-marker text-theme-colored"></i> 25 Dhaka, Bangladesh</li>
                       </ul>
                     </div>
                   </div>
@@ -765,7 +700,7 @@
                       <h5 class="media-heading font-16 font-weight-600"><a href="#">Event: Save The Water</a></h5>
                       <ul class="list-inline font-weight-600 text-gray-dimgray">
                         <li><i class="fa fa-clock-o text-theme-colored"></i> 4.00 pm - 6.00 pm</li>
-                        <li> <i class="fa fa-map-marker text-theme-colored"></i> 25 Newyork City.</li>
+                        <li> <i class="fa fa-map-marker text-theme-colored"></i> 25 Dhaka, Bangladesh</li>
                       </ul>
                     </div>
                   </div>
@@ -787,33 +722,43 @@
               <div class="title-icon">
                 <i class="flaticon-charity-hand-holding-a-heart"></i>
               </div>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem autem voluptatem obcaecati! <br>ipsum dolor sit Rem autem voluptatem obcaecati</p>
+                <p>
+                Join North Bengal Foundation as a volunteer and be a part of meaningful change. <br>
+                Your time and effort can help us support communities, bring hope, and build a better future together.
+                </p>
             </div>
           </div>
         </div>
         <div class="section-content">
           <div class="row multi-row-clearfix">
+
+          @forelse($volunteers as $volunteer)
             <div class="col-xs-12 col-sm-6 col-md-4 mb-30">
               <div class="team-member clearfix">
                 <div class="team-thumb">
-                  <img alt="" src="{{ asset('frontend') }}/images/team/team1.jpg" class="img-fullwidth">
+                  <img alt="" src="{{ asset('storage/' . $volunteer->image) }}" class="img-fullwidth">
                   <div class="overlay">
                     <div class="content">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea iste nihil ex libero ab esse, dignissimos maxime enim sint laborum.</p>
+                      <p>{{ $volunteer->short_bio }}</p>
                     </div>
                   </div>
                 </div>
                 <div class="team-info bg-theme-colored">
-                  <h3 class="mt-0 text-white">Sakib Mahtab</h3>
+                  <h3 class="mt-0 text-white">{{ $volunteer->name }}</h3>
                   <ul class="styled-icons icon-circled icon-theme-colored">
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                    <li><a href="{{ $volunteer->fb_url }}" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="{{ $volunteer->twitter_url }}" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="{{ $volunteer->local_url }}" target="_blank"><i class="fa fa-dribbble"></i></a></li>
                   </ul>
                 </div>
               </div>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 mb-30">
+            @empty 
+            <p>Here is no volunteer</p>
+            @endforelse 
+
+
+            {{--<div class="col-xs-12 col-sm-6 col-md-4 mb-30">
               <div class="team-member clearfix">
                 <div class="team-thumb">
                   <img alt="" src="{{ asset('frontend') }}/images/team/team1.jpg" class="img-fullwidth">
@@ -852,25 +797,14 @@
                   </ul>
                 </div>
               </div>
-            </div>
+            </div>--}}
           </div>
         </div>
       </div>
     </section>
 
     <!-- divider: Emergency Services -->
-    <section class="divider parallax layer-overlay overlay-dark-9" data-stellar-background-ratio="0.2"  data-bg-img="{{ asset('frontend') }}/images/bg/bg2.jpg">
-      <div class="container">
-        <div class="section-content text-center">
-          <div class="row">
-            <div class="col-md-12">
-              <h2 class="mt-0 text-white">How you can help us</h2>
-              <h2 class="text-white">Just call at <span class="text-theme-colored">(+880) 1234 56789</span> to make a donation</h2>
-            </div>
-          </div>
-        </div>
-      </div>      
-    </section>
+    <x-emergency-service title="How you can help us" />
 
     <!-- Section: Become a Volunteer -->
     <section>
@@ -908,9 +842,9 @@
                     <div class="form-group">
                       <label for="form_branch">Choose Branch <small>*</small></label>
                       <select id="form_branch" name="form_branch" class="form-control required">
-                        <option value="UK">UK</option>
-                        <option value="USA">USA</option>
-                        <option value="Australia">Australia</option>
+                        <option value="Dhaka">Dhaka</option>
+                        <option value="Mymensingh">Mymensingh</option>
+                        <option value="Khulna">Khulna</option>
                       </select>
                     </div>
                   </div>
@@ -1262,11 +1196,15 @@
         <div class="section-title text-center">
           <div class="row">
             <div class="col-md-10 col-md-offset-1">
-              <h2 class="text-uppercase line-bottom-center mt-0">Our <span class="text-theme-colored font-weight-600">Blog</span></h2>
+              <h2 class="text-uppercase line-bottom-center mt-0"> <span class="text-theme-colored font-weight-600">News & </span>Media</h2>
               <div class="title-icon">
                 <i class="flaticon-charity-hand-holding-a-heart"></i>
               </div>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem autem voluptatem obcaecati! <br>ipsum dolor sit Rem autem voluptatem obcaecati</p>
+              <p>
+              Stay updated with the latest news, activities, and impact stories from North Bengal Foundation. <br>
+              Discover how we are working to support communities, improve lives, and bring positive change across the region.
+              </p>
+
             </div>
           </div>
         </div>
@@ -1276,11 +1214,13 @@
             @forelse($newses as $news)
             <div class="col-xs-12 col-sm-6 col-md-4">
               <article class="post clearfix mb-sm-30 bg-silver-light">
-                <div class="entry-header">
-                  <div class="post-thumb thumb"> 
-                    <img src="{{ route('imagecache', ['template' => 'cpmd', 'filename' => $news->fi()]) }}" alt="{{ $news->title }}" class="img-responsive img-fullwidth"> 
+                <a href="{{ route('news.details', $news->id) }}">
+                  <div class="entry-header">
+                    <div class="post-thumb thumb"> 
+                      <img src="{{ route('imagecache', ['template' => 'cpmd', 'filename' => $news->fi()]) }}" alt="{{ $news->title }}" class="img-responsive img-fullwidth"> 
+                    </div>
                   </div>
-                </div>
+                </a>
                  {{--<div class="bg-theme-colored p-5 text-center pt-10 pb-10">
                     <span class="mb-10 text-white mr-10 font-13"><i class="fa fa-share-alt mr-5 text-white"></i>24 Share</span>
                     <span class="mb-10 text-white mr-10 font-13"><i class="fa fa-commenting-o mr-5 text-white"></i> 214 Comments</span>
@@ -1317,28 +1257,7 @@
       </div>
     </section>
     
-    <!-- Divider: Clients -->
-    <section class="clients bg-theme-colored">
-      <div class="container pt-0 pb-0">
-        <div class="row">
-          <div class="col-md-12">
-            <!-- Section: Clients -->
-            <div class="owl-carousel-6col clients-logo transparent text-center">
-              <div class="item"> <a href="#"><img src="{{ asset('frontend') }}/images/clients/w1.png" alt=""></a></div>
-              <div class="item"> <a href="#"><img src="{{ asset('frontend') }}/images/clients/w2.png" alt=""></a></div>
-              <div class="item"> <a href="#"><img src="{{ asset('frontend') }}/images/clients/w3.png" alt=""></a></div>
-              <div class="item"> <a href="#"><img src="{{ asset('frontend') }}/images/clients/w4.png" alt=""></a></div>
-              <div class="item"> <a href="#"><img src="{{ asset('frontend') }}/images/clients/w5.png" alt=""></a></div>
-              <div class="item"> <a href="#"><img src="{{ asset('frontend') }}/images/clients/w6.png" alt=""></a></div>
-              <div class="item"> <a href="#"><img src="{{ asset('frontend') }}/images/clients/w3.png" alt=""></a></div>
-              <div class="item"> <a href="#"><img src="{{ asset('frontend') }}/images/clients/w4.png" alt=""></a></div>
-              <div class="item"> <a href="#"><img src="{{ asset('frontend') }}/images/clients/w5.png" alt=""></a></div>
-              <div class="item"> <a href="#"><img src="{{ asset('frontend') }}/images/clients/w6.png" alt=""></a></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <x-brand-slider />
 @endsection
 
 

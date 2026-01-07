@@ -35,20 +35,36 @@ class UserController extends Controller
     public function store(Request $request){
         menuSubmenu('users', 'createUser');
 
-        $this->validate($request,[
-            'name'=>'required|string',
-            'email'=>'required|unique:users,email',
-            'password'=>'required|min:8',
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8',
+            'mobile' => 'nullable|string|max:20',
+            'address' => 'nullable|string|max:255',
+            'designation' => 'nullable|string|max:255',
+            'membership_type' => 'nullable|string|max:255',
+            'short_bio' => 'nullable|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'fb_url' => 'nullable|url',
+            'twitter_url' => 'nullable|url',
+            'insta_url' => 'nullable|url',
+            'yt_url' => 'nullable|url',
+            'local_url' => 'nullable|url',
         ]);
 
-        $pass = rand(10000000,99999999);
-        $user = new User;
-        $user->name  = $request->name;
-        $user->email = $request->email;
-        $user->password_temp =  $pass;
-        $user->password = Hash::make($pass);
-        $user->save();
-        return redirect('/admin/user/create')->with('success','Successfully User Created');
+        $data = $request->except(['image', 'password']);
+        $data['password'] = Hash::make($request->password);
+        $data['password_temp'] = $request->password;
+
+
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('users', 'public');
+            $data['image'] = $path;
+        }
+
+        User::create($data);
+
+        return redirect()->route('admin.create-user')->with('success','Successfully User Created');
     }
     public function edit($id){
         menuSubmenu('users', 'allUsers');
@@ -58,14 +74,38 @@ class UserController extends Controller
 
         menuSubmenu('users', 'allUsers');
 
-        $this->validate($request,[
-            'name'=>'required|string',
-            'email'=>Rule::unique('users')->ignore(User::find($id)),
+        $user = User::findOrFail($id);
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
+            'mobile' => 'nullable|string|max:20',
+            'address' => 'nullable|string|max:255',
+            'designation' => 'nullable|string|max:255',
+            'membership_type' => 'nullable|string|max:255',
+            'short_bio' => 'nullable|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'fb_url' => 'nullable|url',
+            'twitter_url' => 'nullable|url',
+            'insta_url' => 'nullable|url',
+            'yt_url' => 'nullable|url',
+            'local_url' => 'nullable|url',
         ]);
 
-        User::updateUser($request, $id);
+        $data = $request->except('image');
+
+        if ($request->hasFile('image')) {
+            // Delete old image
+            if ($user->image && \Illuminate\Support\Facades\Storage::disk('public')->exists($user->image)) {
+                \Illuminate\Support\Facades\Storage::disk('public')->delete($user->image);
+            }
+            $path = $request->file('image')->store('users', 'public');
+            $data['image'] = $path;
+        }
+
+        $user->update($data);
      
-        return redirect('/admin/users')->with('success','Successfully User Updated');
+        return redirect()->route('admin.user')->with('success','Successfully User Updated');
     }
     public function changePassword(Request $request, $id){
          menuSubmenu('users', 'allUsers');

@@ -484,6 +484,54 @@
                         </ul>
                     </li>
 
+                    <li class="nav-item {{ session('lsbm') == 'companies' ? ' menu-open ' : ''}}">
+                        <a href="#" class="nav-link {{ session('lsbm') == 'companies' ? ' active ' : ''}}">
+                            <i class="nav-icon fas fa-building"></i>
+                            <p>
+                                Companies
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('admin.companies.index') }}" class="nav-link {{ session('lsbsm') == 'allCompanies' ? ' active ' : ''}}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>All Companies</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('admin.companies.create') }}" class="nav-link {{ session('lsbsm') == 'createCompany' ? ' active ' : ''}}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Create Company</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item {{ session('lsbm') == 'causes' ? ' menu-open ' : ''}}">
+                        <a href="#" class="nav-link {{ session('lsbm') == 'causes' ? ' active ' : ''}}">
+                            <i class="nav-icon fas fa-hands-helping"></i>
+                            <p>
+                                Causes
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('admin.causes.index') }}" class="nav-link {{ session('lsbsm') == 'allCauses' ? ' active ' : ''}}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>All Causes</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('admin.causes.create') }}" class="nav-link {{ session('lsbsm') == 'createCause' ? ' active ' : ''}}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Create Cause</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
                     {{-- Contact Messages --}}
                     <li class="nav-item {{ session('lsbm') == 'contacts' ? 'menu-open' : '' }}">
                         <a href="#" class="nav-link {{ session('lsbm') == 'contacts' ? 'active' : '' }}">
