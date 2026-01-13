@@ -29,6 +29,8 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
 use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\Frontend\ContactController;
+use App\Http\Controllers\Frontend\MosqueController;
+use App\Http\Controllers\Admin\MosqueController as AdminMosqueController;
 use App\Http\Controllers\Frontend\MembershipController;
 use App\Http\Controllers\Admin\ContactController as AdminContactController;
 
@@ -156,6 +158,13 @@ Route::get('/quick-view', [FrontendController::class, 'quickView'])->name('quick
 Route::get('/wishlist', [WishlistController::class, 'index'])->name('wishlist.index');
 Route::post('/wishlist/add', [WishlistController::class, 'add'])->name('wishlist.add');
 Route::post('/wishlist/remove', [WishlistController::class, 'remove'])->name('wishlist.remove');
+
+// mosque
+Route::get('/mosque',[MosqueController::class,'index'])->name('mosque');
+
+Route::get('/get-districts/{division_id}', [MosqueController::class, 'getDistricts']);
+Route::get('/get-upazilas/{district_id}', [MosqueController::class, 'getUpazilas']);
+
 
 // Route::get('/contact',[FrontendController::class,'contact'])->name('contact');
 // Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
@@ -626,6 +635,8 @@ Route::middleware(['userRole:admin','auth'])->prefix('admin')->group(function(){
     // Vehicle Assignment Admin Routes
     Route::resource('vehicle-assignments', \App\Http\Controllers\Admin\VehicleAssignmentController::class)->names('admin.vehicle_assignments');
 
+
+
     // membership 
     // Route::resource('members', MemberController::class);
 
@@ -635,6 +646,9 @@ Route::middleware(['userRole:admin','auth'])->prefix('admin')->group(function(){
 
         // Companies 
         Route::resource('companies', CompanyController::class);
+
+        // Mosque Routes
+        Route::resource('mosques', AdminMosqueController::class);
     });
 
 

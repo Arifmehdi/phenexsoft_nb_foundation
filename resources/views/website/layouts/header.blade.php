@@ -51,6 +51,7 @@
               <li><a href="{{ route('cause') }}">Our Causes</a></li>
               <li><a href="{{ route('campaign') }}">Campaigns</a></li>
               <li><a href="{{ route('donate') }}">Donate</a></li>
+              <li><a href="{{ route('mosque') }}">Mosque</a></li>
               <li><a href="#">Membership</a>
                 <ul class="dropdown">
                   <li><a href="{{ route('membership') }}">Membership List</a></li>

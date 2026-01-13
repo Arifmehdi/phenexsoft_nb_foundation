@@ -532,6 +532,30 @@
                         </ul>
                     </li>
 
+                    <li class="nav-item {{ session('lsbm') == 'mosques' ? ' menu-open ' : ''}}">
+                        <a href="#" class="nav-link {{ session('lsbm') == 'mosques' ? ' active ' : ''}}">
+                            <i class="nav-icon fas fa-mosque"></i>
+                            <p>
+                                Mosques
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('admin.mosques.index') }}" class="nav-link {{ session('lsbsm') == 'allMosques' ? ' active ' : ''}}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>All Mosques</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('admin.mosques.create') }}" class="nav-link {{ session('lsbsm') == 'createMosque' ? ' active ' : ''}}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Create Mosque</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
                     {{-- Contact Messages --}}
                     <li class="nav-item {{ session('lsbm') == 'contacts' ? 'menu-open' : '' }}">
                         <a href="#" class="nav-link {{ session('lsbm') == 'contacts' ? 'active' : '' }}">
