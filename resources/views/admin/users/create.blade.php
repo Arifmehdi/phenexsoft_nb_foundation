@@ -58,10 +58,13 @@
                                     <div class="form-group">
                                         <label for="membership_type">Membership Type</label>
                                         <select name="membership_type" id="membership_type" class="form-control @error('membership_type') is-invalid @enderror">
-                                            <option value="">Select Type</option>
-                                            <option value="1" {{ old('membership_type') == '1' ? 'selected' : '' }}>Member</option>
-                                            <option value="2" {{ old('membership_type') == '2' ? 'selected' : '' }}>Volunteer</option>
-                                            <option value="3" {{ old('membership_type') == '3' ? 'selected' : '' }}>Other</option>
+                                            <option value="">-- Select Membership Type --</option>
+                                            <option value="1" {{ old('membership_type') == '1' ? 'selected' : '' }}>Executive Member</option>
+                                            <option value="2" {{ old('membership_type') == '2' ? 'selected' : '' }}>Lifetime Member</option>
+                                            <option value="3" {{ old('membership_type') == '3' ? 'selected' : '' }}>General Member</option>
+                                            <option value="4" {{ old('membership_type') == '4' ? 'selected' : '' }}>Donor</option>
+                                            <option value="5" {{ old('membership_type') == '5' ? 'selected' : '' }}>Volunteer</option>
+                                            <option value="6" {{ old('membership_type') == '6' ? 'selected' : '' }}>Other</option>
                                         </select>
                                         @error('membership_type')<span class="invalid-feedback">{{ $message }}</span>@enderror
                                     </div>
@@ -128,7 +131,7 @@
 
                             {{-- Image --}}
                             <div class="form-group">
-                                <label for="image">User Image</label>
+                                <label for="image">User Image (Width 600px, Height 900px)</label>
                                 <input type="file" name="image" class="form-control-file @error('image') is-invalid @enderror" id="image">
                                 @error('image')<span class="invalid-feedback d-block">{{ $message }}</span>@enderror
                             </div>

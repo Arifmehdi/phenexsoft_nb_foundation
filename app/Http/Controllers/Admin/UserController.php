@@ -125,4 +125,13 @@ class UserController extends Controller
         menuSubmenu('users', 'allUsers');
         return redirect('/admin/users')->with('success','Successfully Deleted');
     }
+
+    public function updateApproval(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $user->is_approve = $request->is_approve;
+        $user->save();
+
+        return response()->json(['message' => 'User approval status updated successfully.']);
+    }
 }

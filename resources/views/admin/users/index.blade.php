@@ -76,6 +76,29 @@
                      }
                 });
             });
+
+            $(document).on('change', '.is_approve_switch', function() {
+                var userId = $(this).data('id');
+                var isApproved = $(this).prop('checked') ? 1 : 0;
+                var url = "{{ route('admin.user.updateApproval', ':id') }}";
+                url = url.replace(':id', userId);
+
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: {
+                        is_approve: isApproved,
+                        _token: "{{ csrf_token() }}"
+                    },
+                    success: function(response) {
+                        alert(response.message);
+                    },
+                    error: function(xhr) {
+                        alert('Error updating approval status.');
+                        console.log(xhr.responseText);
+                    }
+                });
+            });
         });
     </script>
 @endpush

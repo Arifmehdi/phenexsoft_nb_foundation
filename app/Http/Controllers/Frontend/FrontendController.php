@@ -83,7 +83,7 @@ class FrontendController extends Controller
             ->get();
 
         $data['volunteers'] = User::where('membership_type', 2)
-            ->get();
+            ->where('is_approve', 1)->limit(6)->get();
 
         $data['newses'] = BlogPost::whereActive(true)->limit(3)->get();
         $data['causes_for_homepage'] = Cause::where('active', true)->latest()->limit(3)->get();
@@ -214,12 +214,6 @@ class FrontendController extends Controller
     {
         $causes = Cause::where('active', true)->latest()->paginate(10);
         return view('website.campaign', compact('causes'));
-    }
-
-    public function membership()
-    {
-        $memberships = User::where('membership_type',1)->get();
-        return view('website.membership' , compact('memberships'));  
     }
 
     public function cause()

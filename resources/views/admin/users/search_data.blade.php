@@ -7,6 +7,8 @@
         <th>Email</th>
         <th>Member Type</th>
         <th>Temp Password</th>
+        <th>Status</th>
+        <th>Approved</th>
     </tr>
     </thead>
     <tbody class="">
@@ -37,15 +39,25 @@
             <td>{{$user->email}}</td>
             <td>
                 @if($user->membership_type == 1)
-                    Membership
+                    Executive Member
                 @elseif($user->membership_type == 2)
+                    Lifetime Member
+                @elseif($user->membership_type == 3)
+                    General Member
+                @elseif($user->membership_type == 4)
+                    Donor
+                @elseif($user->membership_type == 5)
                     Volunteer
                 @else
-                    User
+                    Other
                 @endif
             </td>
 
             <td>{{ $user->password_temp }}</td>
+            <td><span>{{ $user->is_approve ? 'Approved' : 'Not Approved' }}</span></td>
+            <td>
+                <input type="checkbox" class="is_approve_switch" data-id="{{ $user->id }}" {{ $user->is_approve ? 'checked' : '' }} data-toggle="toggle" data-onstyle="success" data-offstyle="danger">
+            </td>
         </tr>
 
     @endforeach

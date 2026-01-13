@@ -756,52 +756,20 @@
             @empty 
             <p>Here is no volunteer</p>
             @endforelse 
-
-
-            {{--<div class="col-xs-12 col-sm-6 col-md-4 mb-30">
-              <div class="team-member clearfix">
-                <div class="team-thumb">
-                  <img alt="" src="{{ asset('frontend') }}/images/team/team1.jpg" class="img-fullwidth">
-                  <div class="overlay">
-                    <div class="content">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea iste nihil ex libero ab esse, dignissimos maxime enim sint laborum.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="team-info bg-theme-colored">
-                  <h3 class="mt-0 text-white">Zobaier Hosen</h3>
-                  <ul class="styled-icons icon-circled icon-theme-colored">
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 mb-30">
-              <div class="team-member clearfix">
-                <div class="team-thumb">
-                  <img alt="" src="{{ asset('frontend') }}/images/team/team2.jpg" class="img-fullwidth">
-                  <div class="overlay">
-                    <div class="content">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea iste nihil ex libero ab esse, dignissimos maxime enim sint laborum.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="team-info bg-theme-colored">
-                  <h3 class="mt-0 text-white">Osman Bin</h3>
-                  <ul class="styled-icons icon-circled icon-theme-colored">
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>--}}
+          </div>
+          <div class="col-12 text-center mt-30">
+            <a href="{{ route('member.apply') }}" class="btn btn-theme-colored btn-lg mr-2">
+              <i class="fa fa-user-plus"></i> Be a Member
+            </a>
+            <a href="{{ route('membership') }}" class="btn btn-default btn-lg">
+              <i class="fa fa-users"></i> View All Members
+            </a>
           </div>
         </div>
       </div>
     </section>
+
+
 
     <!-- divider: Emergency Services -->
     <x-emergency-service title="How you can help us" />

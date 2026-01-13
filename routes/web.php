@@ -29,6 +29,7 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
 use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\Frontend\ContactController;
+use App\Http\Controllers\Frontend\MembershipController;
 use App\Http\Controllers\Admin\ContactController as AdminContactController;
 
 // Route::get('/',[AuthController::class,'index'])->name('login');
@@ -143,7 +144,9 @@ Route::get('/about',[FrontendController::class,'about'])->name('about');
 Route::get('/cause',[FrontendController::class,'cause'])->name('cause');
 Route::get('/donate',[FrontendController::class,'donate'])->name('donate');
 Route::get('/campaign',[FrontendController::class,'campaign'])->name('campaign');
-Route::get('/membership',[FrontendController::class,'membership'])->name('membership');
+Route::get('/membership',[MembershipController::class,'membership'])->name('membership');
+Route::get('/member/apply',[MembershipController::class,'memberApply'])->name('member.apply');
+Route::post('/membership/store',[MembershipController::class,'membershipStore'])->name('membership.apply.store');
 Route::get('/cause/details/{slug}',[FrontendController::class,'cause_details'])->name('cause.details');
 Route::get('/news',[FrontendController::class,'news'])->name('blog');
 Route::get('/news/details/{id}',[FrontendController::class,'news_details'])->name('news.details');
@@ -369,6 +372,7 @@ Route::middleware(['userRole:admin','auth'])->prefix('admin')->group(function(){
     Route::post('user/update/{id}',[UserController::class,'update'])->name('admin.update-user');
     Route::get('user/delete/{id}',[UserController::class,'delete'])->name('admin.delete-user');
     Route::post('user/change-password/{id}',[UserController::class,'changePassword'])->name('admin.user.change-password');
+    Route::post('user/update-approval/{id}', [UserController::class, 'updateApproval'])->name('admin.user.updateApproval');
 
 
     //search alllllllllllllllllllllll

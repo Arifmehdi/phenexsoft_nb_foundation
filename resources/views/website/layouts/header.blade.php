@@ -51,7 +51,13 @@
               <li><a href="{{ route('cause') }}">Our Causes</a></li>
               <li><a href="{{ route('campaign') }}">Campaigns</a></li>
               <li><a href="{{ route('donate') }}">Donate</a></li>
-              <li><a href="{{ route('membership') }}">Membership</a></li>
+              <li><a href="#">Membership</a>
+                <ul class="dropdown">
+                  <li><a href="{{ route('membership') }}">Membership List</a></li>
+                  <li><a href="{{ route('member.apply') }}">Be a Member</a></li>
+                </ul>
+              </li>
+              {{--<li><a href="{{ route('membership') }}">Membership</a></li>--}}
               <li><a href="{{ route('blog') }}">News & Media</a></li>
               <li><a href="{{ route('contact') }}">Contact</a></li>
             </ul>
